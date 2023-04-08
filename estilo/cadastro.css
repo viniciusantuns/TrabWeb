@@ -2,6 +2,10 @@ html,body {
     font-family: 'Open Sans', serif;
     font-size: 14px;
     font-weight: 300;
+display: flex;
+justify-content: center;
+align-items: center;
+background-image: url(Projeto-Web-II\Views\Imagens\bg-01.jpg);
   }
   .hero.is-success {
     background: #91B2C7;
