@@ -1,14 +1,37 @@
+
 const form = document.querySelector("#registerForm");
 
 
 form.onsubmit = event =>{
-    event.preventDefault();
+    var ok = True;
     if(!validarCpf(document.querySelector("#cpf").value)){
+        ok = False;
         alert('cpf invalido');
     }
+    if(!validateEmail(document.querySelector("#email").value)){
+      ok = False;
+     alert('email invalido');
+    }
+    if(isNaN(document.querySelector("#telefone").value)){
+      ok = False;
+      alert('telefone invalido');
+    }
 
-    // receber valor dos campos
+    if(!ok){
+        console.log("form com problema");
+      // enviar request 
+    }else{
+      console.log("form ok");
+    }
+    event.preventDefault();
 }
+
+function validateEmail(email) {
+  var re = /\S+@\S+\.\S+/;
+  return re.test(email);
+}
+
+//valdiar email
 
 
 //validar cpf
