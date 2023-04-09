@@ -7,11 +7,11 @@ const form_login = document.querySelector("#form_pedido");
 const selectItems = document.querySelector("#pecas");
 
 const items = [
-    {id: 1, nome: "camiseta", valor: "10"},
-    {id: 2, nome: "camisa", valor: "20"},
-    {id: 2,nome: "calcas", valor: "12"},
-    {id: 3,nome: "cueca", valor: "15"},
-    {id: 5,nome: "meia", valor: "9"},
+    {id: 1, nome: "camiseta", valor: "10", prazo: 1},
+    {id: 2, nome: "camisa", valor: "20",  prazo: 3},
+    {id: 2,nome: "calcas", valor: "12",  prazo: 2},
+    {id: 3,nome: "cueca", valor: "15",  prazo: 1},
+    {id: 5,nome: "meia", valor: "9",  prazo: 1},
 ];
 
 
@@ -24,7 +24,8 @@ for(item in items) {
 
 
 form_login.onsubmit = event =>{
-    event.preventDefault();}
+    event.preventDefault();
+}
 
 //botao adicionar itens ao orçamento
 
@@ -44,6 +45,7 @@ function adicionarItem(){
     var obj = {  
         id: prod.dataset.id,
         valor: prod.value,
+        prazo: prod.dataset.prazo,
         qtd: parseInt(qtd)
     }
     orcamento.push(obj);
@@ -65,4 +67,5 @@ function adicionarItem(){
 function removeTableRow(row) {
     var tableRow = row.parentNode.parentNode; // obtém a linha da tabela a partir do botão que foi clicado
     tableRow.parentNode.removeChild(tableRow); // remove a linha da tabela
+
 }
