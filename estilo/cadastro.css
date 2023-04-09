@@ -1,11 +1,10 @@
-/* html,body { 
+ html,body { 
     font-family: 'Open Sans', serif;
     font-size: 14px;
     font-weight: 300;
-display: flex;
-justify-content: center;
-align-items: center;
-background-color: rgb(233, 93, 252);
+
+background-color: #9A616D
+
   }
   .hero.is-success {
     background: #91B2C7;
@@ -19,4 +18,16 @@ background-color: rgb(233, 93, 252);
   }
   p {
     font-weight: 700;
-  }*/
+  }
+  .card{
+    height: 100%
+  }
+  .card-body{
+  display: flex;
+justify-content: center;
+margin: 0%;
+padding: 0%;
+  }
+  .col-md-6 {
+    width: 33vw;
+  }
