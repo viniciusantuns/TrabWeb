@@ -4,17 +4,17 @@ const form = document.querySelector("#registerForm");
 
 form.onsubmit = event =>{
   console.log("teste");
-    var ok = True;
+    var ok = true;
     if(!validarCpf(document.querySelector("#cpf").value)){
-        ok = False;
+        ok = false;
         alert('cpf invalido');
     }
     if(!validateEmail(document.querySelector("#email").value)){
-      ok = False;
+      ok = false;
      alert('email invalido');
     }
     if(isNaN(document.querySelector("#telefone").value)){
-      ok = False;
+      ok = false;
       alert('telefone invalido');
     }
 

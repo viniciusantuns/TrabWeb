@@ -3,7 +3,8 @@ const form_login = document.querySelector("#form_login");
 
 form_login.onsubmit = event =>{
     console.log("aqui");
-    var ok = True;
+    event.preventDefault();
+    var ok = true;
     if(!validateEmail(document.querySelector("#email"))){
         alert("email invalido!");
     }
