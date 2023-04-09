@@ -11,88 +11,70 @@
 
 <body>
     <header>
-        <div name="menu" id="menu">
-            <ul class="nav nav-pills nav-fill gap-2 p-1 small bg-primary rounded-5 shadow-sm" id="pillNav2" role="tablist" style="--bs-nav-link-color: var(--bs-white); --bs-nav-pills-link-active-color: var(--bs-primary); --bs-nav-pills-link-active-bg: var(--bs-white);">
-                <li class="nav-item" role="presentation">
-                  <button class="nav-link active rounded-5" id="home-tab2" data-bs-toggle="tab" type="button" role="tab" aria-selected="true">Home</button>
-                </li>
-                <li class="nav-item" role="presentation">
-                  <button class="nav-link rounded-5" id="profile-tab2" data-bs-toggle="tab" type="button" role="tab" aria-selected="false">Serviços</button>
-                </li>
-                <li class="nav-item" role="presentation">
-                  <button class="nav-link rounded-5" id="contact-tab2" data-bs-toggle="tab" type="button" role="tab" aria-selected="false">Contato</button>
-                </li>
-              </ul>
-        </div>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+            <div class="container">
+              <a class="navbar-brand" href="#">
+                <a class="nav-link active" aria-current="login" href="login.html">Deslogar</a>
+              </a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto">
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Link</a>
+                  </li>
+                 
+                </ul>
+              </div>
+            </div>
+          </nav>
     </header>
+    <main>
     <div name="pedido" id="home">
 
-        <div class="container">
-            <div class="table-wrap">
-                <table class="table justify-content-center">
-                    <thead>
-                        <th>&nbsp;</th>
-                        <th>&nbsp;</th>
-                        <th>Peça</th>
-                        <th>Preço</th>
-                        <th>Quantidade</th>
-                        <th>Prazo</th>
-                        <th>Total</th>
-                        <th>&nbsp;</th>
-                    </thead>
-                    <tbody>
-                            <tr class="align-middle alert border-bottom" role="alert">
-                                <td>
-                                    <div class="alinhamento">
-                                        <input type="checkbox" id="check">
-                                    </div>
-                                </td>
-                                <td class="text-center">
-                                    <img class="pic" alt="">
-                                </td>
-                                <td>
-                                    <div class="alinhamento">
-                                        <p id="itemName" class="m-0 fw-bold"></p>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="alinhamento">
-                                        <div class="fw-600">
-                                            <span class="preco"></span>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td class="d-">
-                                    <input id="itemQuantidade" class="input" value="0" type="number" placeholder="Insira a quantidade" min="0" oninput="this.value = Math.abs(this.value)">
-                                    <p id="idItem" style="display: none;"></p>
-                                </td>
-                                <td>
-                                    <div class="alinhamento">
-                                        <div class="fw-600">
-                                            <span class="prazo"></span>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="alinhamento">
-                                        <div class="fw-600">
-                                            <span class="result"><fmt:formatNumber value='0.00' type="currency"/></span>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                        </c:forEach>
-                      
-                    </tbody>
-                </table>
-            </div>
-        </div>
+        <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Peça</th>
+                <th scope="col">Quantidade</th>
+                <th scope="col">Valor</th>
+                <th scope="col">Prazo</th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td><div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Camisa</button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                      <a class="dropdown-item" href="#">Calça</a>
+                      <a class="dropdown-item" href="#">Camisa</a>
+                      <a class="dropdown-item" href="#">Roupa Intima</a>
+                      <a class="dropdown-item" href="#">Blusa</a>
+                      <a class="dropdown-item" href="#">Sapato</a>
+                    </div>
+                  </div></td>
+                <td><input type="number" ></input></td>
+                <td> </td>
+                <td></td>
+                <td class="mais"><img src="Imagens\mais.png"></td>
+              </tr>
+    
+            </tbody>
+          </table>
 
 
     </div>
+</main>
 
-
-    <hr><footer> &copy;Equipe 03 - Projeto Final - Desenvolvimento Web II</footer>
+    <!-- <footer> &copy;Equipe 03 - Projeto Final - Desenvolvimento Web II</footer> -->
 
 </body>
 </html>
