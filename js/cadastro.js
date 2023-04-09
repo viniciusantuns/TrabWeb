@@ -3,6 +3,7 @@ const form = document.querySelector("#registerForm");
 
 
 form.onsubmit = event =>{
+  console.log("teste");
     var ok = True;
     if(!validarCpf(document.querySelector("#cpf").value)){
         ok = False;
@@ -30,8 +31,6 @@ function validateEmail(email) {
   var re = /\S+@\S+\.\S+/;
   return re.test(email);
 }
-
-//valdiar email
 
 
 //validar cpf
@@ -91,20 +90,20 @@ function vldPrimeiroDigito(cpf) {
 //consulta cep
 function limpa_formulário_cep() {
     //Limpa valores do formulário de cep.
-    document.getElementById('logradouro').value=("");
+    document.getElementById('rua').value=("");
     document.getElementById('bairro').value=("");
-    document.getElementById('localidade').value=("");
-    document.getElementById('uf').value=("");
+    document.getElementById('cidade').value=("");
+    document.getElementById('estado').value=("");
     document.getElementById('complemento').value=("");
 }
 
 function meu_callback(conteudo) {
     if (!("erro" in conteudo)) {
         //Atualiza os campos com os valores.
-        document.getElementById('logradouro').value=(conteudo.logradouro);
+        document.getElementById('rua').value=(conteudo.logradouro);
         document.getElementById('bairro').value=(conteudo.bairro);
-        document.getElementById('localidade').value=(conteudo.localidade);
-        document.getElementById('uf').value=(conteudo.uf);
+        document.getElementById('cidade').value=(conteudo.localidade);
+        document.getElementById('estado').value=(conteudo.uf);
         document.getElementById('complemento').value=(conteudo.complemento);
     } else {
         //CEP não Encontrado.
@@ -128,10 +127,10 @@ function pesquisacep(valor) {
         if(validacep.test(cep)) {
 
             //Preenche os campos com "..." enquanto consulta webservice.
-            document.getElementById('logradouro').value="...";
+            document.getElementById('rua').value="...";
             document.getElementById('bairro').value="...";
-            document.getElementById('localidade').value="...";
-            document.getElementById('uf').value="...";
+            document.getElementById('cidade').value="...";
+            document.getElementById('estado').value="...";
             document.getElementById('complemento').value="...";
  
             //Cria um elemento javascript.
