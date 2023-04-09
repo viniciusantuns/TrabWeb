@@ -2,15 +2,16 @@ const form_login = document.querySelector("#form_login");
 
 
 form_login.onsubmit = event =>{
-    console.log("aqui");
     event.preventDefault();
     var ok = true;
-    if(!validateEmail(document.querySelector("#email"))){
+    if(!validateEmail(document.querySelector("#email").value)){
         alert("email invalido!");
+        ok = false;
     }
 
-    if(!ok){
-        event.preventDefault();
+    if(ok){
+        console.log("isso")
+        window.location.href = "./index.html";
     }
 }
 

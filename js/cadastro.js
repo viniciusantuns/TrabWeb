@@ -18,10 +18,7 @@ form.onsubmit = event =>{
       alert('telefone invalido');
     }
 
-    if(!ok){
-        console.log("form com problema");
-      // enviar request 
-    }else{
+    if(ok){  
       console.log("form ok");
     }
     event.preventDefault();
