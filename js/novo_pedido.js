@@ -1,4 +1,4 @@
-const orcamento = [
+var orcamento = [
     
 ];
 
@@ -33,24 +33,15 @@ form_login.onsubmit = event =>{
 // addItemsBtn.addEventListener('click',adicionarItem);
 
 
-var prod = "";
 function adicionarItem(){
 
+    
     var qtd = document.getElementById("qtd_pecas").value;
     var select = document.getElementById("pecas"); //select
     var idx = select.selectedIndex;
-    prod = select.options[idx];
 
-    // novo
-    var obj = {  
-        id: prod.dataset.id,
-        valor: prod.value,
-        prazo: prod.dataset.prazo,
-        qtd: parseInt(qtd)
-    }
-    orcamento.push(obj);
+    var prod = select.options[idx];
 
-    var indx;
     var table = document.getElementById("tbl");
     var row = table.insertRow(table.rows.length);
     var cell1 = row.insertCell(0);
@@ -62,10 +53,38 @@ function adicionarItem(){
     cell3.innerHTML = prod.value;
     cell4.innerHTML = "<button class='btn btn-danger'onclick='removeTableRow(this)'>Excluir</button>"
 
+    orcamento = tableToJson(table);
 }
 
 function removeTableRow(row) {
     var tableRow = row.parentNode.parentNode; // obtém a linha da tabela a partir do botão que foi clicado
     tableRow.parentNode.removeChild(tableRow); // remove a linha da tabela
 
+}
+
+function tableToJson(table) {
+  var data = [];
+
+  // primeira linha do cabeçalho da tabela
+  var headers = [];
+  for (var i = 0; i < table.rows[0].cells.length; i++) {
+    headers[i] = table.rows[0].cells[i].textContent.toLowerCase().replace(/ /gi, '');
+  }
+
+  // percorre as linhas da tabela
+  for (var i = 1; i < table.rows.length; i++) {
+    var tableRow = table.rows[i];
+    var rowData = {};
+
+    // percorre as células da linha atual
+    for (var j = 0; j < tableRow.cells.length; j++) {
+      rowData[headers[j]] = tableRow.cells[j].textContent;
+    }
+
+    // adiciona a linha atual ao array de dados
+    data.push(rowData);
+  }
+
+  // converte o array de dados em um objeto JSON e retorna
+  return data;
 }
