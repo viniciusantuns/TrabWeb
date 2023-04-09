@@ -8,8 +8,10 @@ const selectItems = document.querySelector("#pecas");
 
 const items = [
     {id: 1, nome: "camiseta", valor: "10"},
+    {id: 2, nome: "camisa", valor: "20"},
     {id: 2,nome: "calcas", valor: "12"},
-    {id: 3,nome: "intimos", valor: "15"},
+    {id: 3,nome: "cueca", valor: "15"},
+    {id: 5,nome: "meia", valor: "9"},
 ];
 
 
@@ -37,7 +39,6 @@ function adicionarItem(){
     var select = document.getElementById("pecas"); //select
     var idx = select.selectedIndex;
     prod = select.options[idx];
-    console.log(prod);
 
     // novo
     var obj = {  
