@@ -11,6 +11,28 @@
 </head>
 
 <body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-primary bg-primary static-top">
+            <div class="container">
+              <a class="navbar-brand" href="#">
+                <a class="nav-link active" aria-current="login" href="index.html">Home</a>
+              </a>
+              <a class="navbar-brand" href="#">
+                <a class="nav-link active" aria-current="login" href="ListaPedidos.html">Lista de Pedidos</a>
+              </a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto">
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="login.html">Sair</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </nav>
+    </header>
     <div class="container-fluid">
         <div class="row justify-content-center">
             <div class="col-md-12" name="pedido" id="pedido">
@@ -29,9 +51,9 @@
                                         <label for="pecas">Quantidade:</label>
                                         <input id="qtd_pecas" class="form-control" type="number" min="1">
                                     </div>
-                                    <div class="col-md-2">
-                                        <button onclick="adicionarItem()" id="btn-item"class="btn btn-primary">Adicionar</button>
-                                    </div>
+                                </div>
+                                <div id="btn_add" class="col-md-2">
+                                    <button onclick="adicionarItem()" id="btn-item" class="btn btn-primary">Adicionar</button>
                                 </div>
                             </form>
                         </div>  
@@ -57,10 +79,8 @@
                     
                 </table>
             </div>
-            <tfoot>
-              <button id="nv_orcamento" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" >Soliciar Orçamento</button>
-          </tfoot>
         </div>
+            <button class="btn btn-secondary" id="nv_orcamento" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" >Solicitar Orçamento</button>
     </div>
 
     <!-- Modal -->
@@ -68,16 +88,16 @@
       <div class="modal-dialog modal-lg">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+            <h5 class="modal-title" id="exampleModalLabel">Aprovar Orçamento</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
             ...
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Aprovar</button>
-            <button type="button" class="btn btn-primary">Rejeitar</button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+            <button type="button" class="btn btn-success">Aprovar</button>
+            <button type="button" class="btn btn-danger">Rejeitar</button>
           </div>
         </div>
       </div>

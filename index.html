@@ -11,10 +11,13 @@
 
 <body>
     <header>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+        <nav class="navbar navbar-expand-lg navbar-primary bg-primary static-top">
             <div class="container">
               <a class="navbar-brand" href="#">
-                <a class="nav-link active" aria-current="login" href="login.html">Deslogar</a>
+                <a class="nav-link active" aria-current="login" href="index.html">Home</a>
+              </a>
+              <a class="navbar-brand" href="#">
+                <a class="nav-link active" aria-current="login" href="ListaPedidos.html">Lista de Pedidos</a>
               </a>
               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -22,12 +25,8 @@
               <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ms-auto">
                   <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    <a class="nav-link active" aria-current="page" href="#">Sair</a>
                   </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
-                  </li>
-                 
                 </ul>
               </div>
             </div>
@@ -50,11 +49,6 @@
                 </thead>
                 <tbody>
                         <tr class="align-middle alert border-bottom" role="alert">
-                            <td>
-                                <div class="alinhamento">
-                                    <input type="checkbox" id="check">
-                                </div>
-                            </td>
                             <td class="text-center">
                                 <img class="pic" alt="">
                             </td>
@@ -85,8 +79,14 @@
                                     </div>
                                 </td>
                                 <td>
+                                    <div class="alinhamento">
+                                        <div class="fw-600">
+                                            <span class="result"><fmt:formatNumber value='0.00' type="currency"/></span>
+                                        </div>
+                                    </td>
+                                <td>
                                 </div>
-                                <Button>Detalhes</Button>
+                                <Button class="btn btn-secondary">Detalhes</Button>
                                 </div>
                             </td>
                         </tr>

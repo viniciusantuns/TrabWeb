@@ -11,8 +11,7 @@ main {
 
 }
 .pendentes {
-    background-color: rgba(245, 245, 220, 0.827);
     width: 70vw;
-   height: 39vw;
-   margin: 3%;
+    height: 39vw;
+    margin: 3%;
 }
