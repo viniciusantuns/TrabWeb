@@ -112,15 +112,18 @@ function objectToTable(objList) {
   // Cria uma linha na tabela para cada objeto da lista e calcula a soma dos preços
   let somaPrecos = 0;
   let maiorData = null;
+  let quantidade = 0;
   for (let i = 0; i < objList.length; i++) {
     let obj = objList[i];
     tableHtml += '<tr>';
     for (let j = 0; j < keys.length-1; j++) {
       let key = keys[j];
       tableHtml += '<td>' + obj[key] + '</td>';
-      if (key === 'Valor Unitário') {
-        somaPrecos += parseFloat(obj[key]);
-      } else if (key === 'Prazo') {
+      if (key === 'Quantidade') {
+	quantidade = parseFloat(obj[key]);
+      } else if (key === "Valor Unitário"){
+        somaPrecos += parseFloat(obj[key])*quantidade;
+      }	else if (key === 'Prazo') {
         let data = obj[key];
         if (maiorData === null || data > maiorData) {
           maiorData = data;
