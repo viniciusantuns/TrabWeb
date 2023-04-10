@@ -1,6 +1,6 @@
  html,body { 
     font-family: 'Open Sans', serif;
-    font-size: 11px;
+    font-size: 10px;
     font-weight: 300;
 
 background-color: #9A616D
@@ -29,7 +29,13 @@ margin: 0%;
 padding: 0%;
   }
   .col-md-6 {
-    width: 33vw;
+    width: 45%;
+  
+  }
+  .row{
+    display: flex;
+  justify-content: space-around;
+
   }
 
   
