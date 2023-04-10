@@ -2,7 +2,6 @@ var orcamento = [
     
 ];
 
-
 const form_login = document.querySelector("#form_pedido");
 const selectItems = document.querySelector("#pecas");
 
@@ -42,16 +41,20 @@ function adicionarItem(){
 
     var prod = select.options[idx];
 
+    console.log(prod);
+
     var table = document.getElementById("tbl");
     var row = table.insertRow(table.rows.length);
     var cell1 = row.insertCell(0);
     var cell2 = row.insertCell(1);
     var cell3 = row.insertCell(2);
     var cell4 = row.insertCell(3);
+    var cell5 = row.insertCell(4);
     cell1.innerHTML = prod.text;
     cell2.innerHTML = qtd;
     cell3.innerHTML = prod.value;
-    cell4.innerHTML = "<button class='btn btn-danger'onclick='removeTableRow(this)'>Excluir</button>"
+    cell4.innerHTML = prod.dataset.prazo; 
+    cell5.innerHTML = "<button class='btn btn-danger'onclick='removeTableRow(this)'>Excluir</button>"
 
     orcamento = tableToJson(table);
 }
@@ -68,11 +71,11 @@ function tableToJson(table) {
   // primeira linha do cabeçalho da tabela
   var headers = [];
   for (var i = 0; i < table.rows[0].cells.length; i++) {
-    headers[i] = table.rows[0].cells[i].textContent.toLowerCase().replace(/ /gi, '');
+    headers[i] = table.rows[0].cells[i].textContent;
   }
 
   // percorre as linhas da tabela
-  for (var i = 1; i < table.rows.length; i++) {
+  for (var i = 2; i < table.rows.length; i++) {
     var tableRow = table.rows[i];
     var rowData = {};
 
@@ -88,3 +91,57 @@ function tableToJson(table) {
   // converte o array de dados em um objeto JSON e retorna
   return data;
 }
+
+
+
+
+function objectToTable(objList) {
+
+  let hoje = new Date();
+  let prazo = new Date();
+  let tableHtml = '<table class="table">';
+
+  // Cria o cabeçalho da tabela com base nas chaves do primeiro objeto da lista
+  let keys = Object.keys(objList[0]);
+  tableHtml += '<tr>';
+  for (let i = 0; i < keys.length-1; i++) {
+    tableHtml += '<th>' + keys[i] + '</th>';
+  }
+  tableHtml += '</tr>';
+
+  // Cria uma linha na tabela para cada objeto da lista e calcula a soma dos preços
+  let somaPrecos = 0;
+  let maiorData = null;
+  for (let i = 0; i < objList.length; i++) {
+    let obj = objList[i];
+    tableHtml += '<tr>';
+    for (let j = 0; j < keys.length-1; j++) {
+      let key = keys[j];
+      tableHtml += '<td>' + obj[key] + '</td>';
+      if (key === 'Valor Unitário') {
+        somaPrecos += parseFloat(obj[key]);
+      } else if (key === 'Prazo') {
+        let data = obj[key];
+        if (maiorData === null || data > maiorData) {
+          maiorData = data;
+        }
+      }
+    }
+    tableHtml += '</tr>';
+  }
+
+  // Adiciona uma linha adicional no final da tabela com a soma dos preços e a maior data
+  tableHtml += '<tr><td style="text-align: right;" colspan="' + keys.length + '">Soma dos preços: ' + somaPrecos + '</td></tr>';
+  if (maiorData !== null) {
+    prazo.setDate(hoje.getDate()+ parseInt(maiorData));
+    tableHtml += '<tr><td style="text-align: right;"> Prazo: ' + prazo.toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit', year: 'numeric' }) + '</td></tr>';
+  }
+
+  tableHtml += '</table>';
+  return tableHtml;
+}
+
+
+
+
+
