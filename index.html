@@ -19,13 +19,13 @@
               <a class="navbar-brand" href="#">
                 <a class="nav-link active" aria-current="login" href="ListaPedidos.html">Lista de Pedidos</a>
               </a>
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <a class="navbar-brand" href="#">
+                <a class="nav-link active" aria-current="login" href="Pedido.html">Realizar Pedido</a>
+              </a>
+              <div class="navbar-brand" id="">
                 <ul class="navbar-nav ms-auto">
                   <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Sair</a>
+                    <a class="nav-link active" aria-current="page" href="login.html">Sair</a>
                   </li>
                 </ul>
               </div>
@@ -86,7 +86,7 @@
                                     </td>
                                 <td>
                                 </div>
-                                <Button class="btn btn-secondary">Detalhes</Button>
+                                <Button class="btn btn-secondary" id="detalhe_pedido" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">Detalhes</Button>
                                 </div>
                             </td>
                         </tr>
@@ -98,6 +98,25 @@
     </div>
 </div>
 </main>
+
+<!-- Modal - Detalhes de Pedido -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Detalhes do Pedido</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          ... detalhes do pedido a aqui..
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
   <!-- <footer> &copy;Equipe 03 - Projeto Final - Desenvolvimento Web II</footer> -->
 
 </body>
