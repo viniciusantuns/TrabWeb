@@ -34,12 +34,18 @@ form_login.onsubmit = event =>{
 
 function adicionarItem(){
 
-    
     var qtd = document.getElementById("qtd_pecas").value;
     var select = document.getElementById("pecas"); //select
     var idx = select.selectedIndex;
 
     var prod = select.options[idx];
+
+	console.log(qtd)
+	console.log(prod)
+
+	if(!qtd || (!prod || prod.text === "Selecione um produto")){
+		return
+	}
 
     console.log(prod);
 
