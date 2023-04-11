@@ -61,7 +61,7 @@
                             <td>
                                 <div class="alinhamento">
                                     <div class="fw-600">
-                                        <span class="preco"></span>
+                                        <span class="pedido">3</span>
                                     </div>
                                 </div>
                             </td>
@@ -69,20 +69,20 @@
                             <td>
                                 <div class="alinhamento">
                                     <div class="fw-600">
-                                        <span class="prazo"></span>
+                                        <span class="preco">100.00</span>
                                     </div>
                                 </div>
                             </td>
                             <td>
                                 <div class="alinhamento">
                                     <div class="fw-600">
-                                        <span class="result"><fmt:formatNumber value='0.00' type="currency"/></span>
+                                        <span class="result"><fmt:formatNumber value='0.00' type="currency"/>Pendente</span>
                                     </div>
                                 </td>
                                 <td>
                                     <div class="alinhamento">
                                         <div class="fw-600">
-                                            <span class="result"><fmt:formatNumber value='0.00' type="currency"/></span>
+                                            <span class="result"><fmt:formatNumber value='0.00' type="currency"/>15 dias</span>
                                         </div>
                                     </td>
                                 <td>
@@ -91,6 +91,49 @@
                                 </div>
                             </td>
                         </tr>
+
+                        <tr class="align-middle alert border-bottom" role="alert">
+                          <td class="text-center">
+                              <img class="pic" alt="">
+                          </td>
+                          <td>
+                              <div class="alinhamento">
+                                  <p id="itemName" class="m-0 fw-bold"></p>
+                              </div>
+                          </td>
+                          <td>
+                              <div class="alinhamento">
+                                  <div class="fw-600">
+                                      <span class="pedido">4</span>
+                                  </div>
+                              </div>
+                          </td>
+                      
+                          <td>
+                              <div class="alinhamento">
+                                  <div class="fw-600">
+                                      <span class="preco">150.00</span>
+                                  </div>
+                              </div>
+                          </td>
+                          <td>
+                              <div class="alinhamento">
+                                  <div class="fw-600">
+                                      <span class="result"><fmt:formatNumber value='0.00' type="currency"/>Aguardando Coleta</span>
+                                  </div>
+                              </td>
+                              <td>
+                                  <div class="alinhamento">
+                                      <div class="fw-600">
+                                          <span class="result"><fmt:formatNumber value='0.00' type="currency"/>10 dias</span>
+                                      </div>
+                                  </td>
+                              <td>
+                              </div>
+                              <Button class="btn btn-secondary" id="detalhe_pedido" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">Detalhes</Button>
+                              </div>
+                          </td>
+                      </tr>
                     </c:forEach>
                   
                 </tbody>
