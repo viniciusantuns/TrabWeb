@@ -118,7 +118,8 @@ $('#exampleModal').on('show.bs.modal', function () {
 });
 
 $("#aprovar").on("click", function(){
-	bootbox.alert('Hello world!');
+  var num = Math.floor(Math.random() * (1000 - 1) + 1);
+	alert('Numero do pedido: ' + num);
 });
 
 $("#recusar").on("click", function(){
