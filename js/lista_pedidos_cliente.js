@@ -63,8 +63,7 @@ function listarPedidos(status, pedidos)
 
 
 function cancelar_pedido(id_pedido) {
-    
-    var pedido = pedidos.find(ped => ped.id_Pedido == id_pedido);
+    var pedido = pedidos.find(ped => ped.id_Pedido === id_pedido);
     
     console.log(pedidos);
     if (pedido) { // se achou alguma merda

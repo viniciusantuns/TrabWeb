@@ -10,8 +10,11 @@ form_login.onsubmit = event =>{
     }
 
     if(ok){
-        console.log("isso")
-        window.location.href = "./index.html";
+        if(document.querySelector("#email").value == 'cliente@cliente.com'){
+            window.location.href = "./index.html";
+        }else if(document.querySelector("#email").value == 'funcionario@funcionario.com'){
+            window.location.href = "./index_funcionario.html";
+        }
     }
 }
 
