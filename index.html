@@ -3,11 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 <link rel="stylesheet" type="text/css" href=".//estilo/index.css">
 <title>LOL Lavanderia On-Line</title>
-
+<script src="js/main.js"></script>
 </head>
 
 <body>
@@ -37,7 +38,7 @@
 <div class="pendentes">
     <div class="container">
         <div class="table-wrap">
-            <table class="table justify-content-center">
+            <table class="table justify-content-center pedidos">
                 <thead>
                     <th>&nbsp;</th>
                     <th>&nbsp;</th>
@@ -46,7 +47,7 @@
                     <th>Status</th>
                     <th>Prazo</th>
                     <th></th>
-                    <th>&nbsp;</th>
+                    <th></th>
                 </thead>
                 <tbody>
                         <tr class="align-middle alert border-bottom" role="alert">
@@ -76,7 +77,7 @@
                             <td>
                                 <div class="alinhamento">
                                     <div class="fw-600">
-                                        <span class="result"><fmt:formatNumber value='0.00' type="currency"/>Pendente</span>
+                                        <span class="result status"><fmt:formatNumber value='0.00' type="currency"/></span>
                                     </div>
                                 </td>
                                 <td>
@@ -89,6 +90,11 @@
                                 </div>
                                 <Button class="btn btn-secondary" id="detalhe_pedido" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">Detalhes</Button>
                                 </div>
+<td>
+                              <div>
+                              <Button class="btn btn-secondary recolhido" type="button">Recolhido</Button>
+                              </div>
+                          </td>
                             </td>
                         </tr>
 
@@ -119,7 +125,7 @@
                           <td>
                               <div class="alinhamento">
                                   <div class="fw-600">
-                                      <span class="result"><fmt:formatNumber value='0.00' type="currency"/>Aguardando Coleta</span>
+                                      <span class="result status"><fmt:formatNumber value='0.00' type="currency"/>Aguardando Coleta</span>
                                   </div>
                               </td>
                               <td>
@@ -129,8 +135,13 @@
                                       </div>
                                   </td>
                               <td>
-                              </div>
+                              <div>
                               <Button class="btn btn-secondary" id="detalhe_pedido" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">Detalhes</Button>
+                              </div>
+                          </td>
+<td>
+                              <div>
+                              <Button class="btn btn-secondary recolhido"  type="button">Recolhido</Button>
                               </div>
                           </td>
                       </tr>
@@ -166,3 +177,28 @@
 
 </body>
 </html>
+
+<script >
+$(document).ready(function() {
+    $(".pedidos tr").each(function() {
+        var valorColuna = $(this).find('td:nth-child(5)').text().trim();
+        var botaoColuna = $(this).find('td:nth-child(8) button');
+        console.log("a");
+        console.log(valorColuna);
+        if (valorColuna === 'EM ABERTO') {
+            botaoColuna.show();
+        } else {
+            botaoColuna.hide();
+        }
+    });
+    $('.recolhido').on('click', function() {
+        var $row = $(this).closest('tr'); // Encontra a linha correspondente
+        var $coluna = $row.find('td:eq(4)'); // Encontra a segunda coluna da linha
+        $coluna.text(estados[2].estado); // Atualiza o conteúdo da célula
+    });
+});
+id = 1;
+var status = $(".status").each(function() {
+    $(this).text(estados[0].estado);
+    id++;
+});</script>
