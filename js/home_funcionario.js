@@ -4,9 +4,9 @@ document.addEventListener("DOMContentLoaded", function(e) {
 
 
 pedidos = [
-    { id_Pedido: "3", status: "Em aberto", dt_pedido: "31/03/2023", valor: "75,00"},
-    { id_Pedido: "4", status: "Em aberto", dt_pedido: "11/04/2023", valor: "100,00" },
-    { id_Pedido: "5", status: "Em aberto", dt_pedido: "01/05/2023",  valor: "200,00" },
+    { id_Pedido: "7", status: "Em aberto", dt_pedido: "31/03/2023", valor: "75,00"},
+    { id_Pedido: "8", status: "Em aberto", dt_pedido: "11/04/2023", valor: "100,00" },
+    { id_Pedido: "9", status: "Em aberto", dt_pedido: "01/05/2023",  valor: "200,00" },
 ]
 
 
@@ -46,7 +46,7 @@ function listarPedidos(l_pedidos)
 
 function confirmar_recolhimento(id_pedido){
     let pedido = pedidos.find(ped => ped.id_Pedido == id_pedido);
-    if (pedido) { // se achou alguma merda
+    if (pedido) { // se achou alguma coisa
         if(confirm("Confirmar recolhimento do pedido?")){
             alert('Pedido: ' + pedido.id_Pedido + ', Status alterado com sucesso');
             pedidos = pedidos.filter(ped => ped.id_Pedido !== pedido.id_Pedido);

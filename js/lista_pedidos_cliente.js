@@ -66,8 +66,8 @@ function cancelar_pedido(id_pedido) {
     var pedido = pedidos.find(ped => ped.id_Pedido === id_pedido);
     
     console.log(pedidos);
-    if (pedido) { // se achou alguma merda
-        if(confirm("Realmente deseja fazer essa pira?")){
+    if (pedido) { // se achou alguma coisa
+        if(confirm("Realmente deseja cancelar o pedido?")){
             pedido.status = 'Cancelado'; //altera dentro do json a brincadeira
             listarPedidos(select_status.value, pedidos);
         }
