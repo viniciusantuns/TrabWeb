@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 var estados = [
 	{id: 1, estado: "EM ABERTO", cor: "#FFFF00"},
 	{id: 2, estado: "REJEITADO/CANCELADO", cor: "#FF0000"},
@@ -6,7 +6,6 @@ var estados = [
 	{id: 4, estado: "AGUARDANDO PAGAMENTO", cor: "#0080FF"},
 	{id: 5, estado: "PAGO", cor: "#FF8000"},
 	{id: 6, estado: "FINALIZADO", cor: "#00CC00"},
-=======
 const estados = [
 	{id: 1, estado: "EM ABERTO", cor: "FFFF00"},
 	{id: 2, estado: "REJEITADO/CANCELADO", cor: "FF0000"},
@@ -14,5 +13,4 @@ const estados = [
 	{id: 4, estado: "AGUARDANDO PAGAMENTO", cor: "0080FF"},
 	{id: 5, estado: "PAGO", cor: "FF8000"},
 	{id: 6, estado: "FINALIZADO", cor: "00CC00"},
->>>>>>> 8142696d84f1967618c0dd7716f76730c4a04e90
 ];
