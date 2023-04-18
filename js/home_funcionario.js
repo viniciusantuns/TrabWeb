@@ -1,12 +1,13 @@
+
 document.addEventListener("DOMContentLoaded", function(e) {
     listarPedidos(pedidos);
 });
 
 
 pedidos = [
-    { id_Pedido: "7", status: "Em aberto", dt_pedido: "31/03/2023", valor: "75,00"},
-    { id_Pedido: "8", status: "Em aberto", dt_pedido: "11/04/2023", valor: "100,00" },
-    { id_Pedido: "9", status: "Em aberto", dt_pedido: "01/05/2023",  valor: "200,00" },
+    { id_Pedido: "7", status: estados[0].estado, dt_pedido: "31/03/2023", valor: "75,00"},
+    { id_Pedido: "8", status: estados[1].estado, dt_pedido: "11/04/2023", valor: "100,00" },
+    { id_Pedido: "9", status: estados[2].estado, dt_pedido: "01/05/2023",  valor: "200,00" },
 ]
 
 
@@ -39,7 +40,13 @@ function listarPedidos(l_pedidos)
         cell2.innerHTML = element.dt_pedido;
         cell3.innerHTML = element.valor;
         cell4.innerHTML = element.status;
-        cell5.innerHTML = "<button onclick='confirmar_recolhimento(this.value)'  id='btn-confirm-recol' value="+element.id_Pedido+" class='btn btn-primary' >Confirmar Recolhimento</button>"
+        cell5.innerHTML = "<button id='btn-confirm-recol' value="+element.id_Pedido+" class='recolhido btn btn-primary' >Confirmar Recolhimento</button>"
+	var style = ""
+	if (element.status !== "EM ABERTO"){
+		console.log('a');
+		style = "Display: None;"
+	}
+	cell5.style = style
     });
 
 }
@@ -49,7 +56,7 @@ function confirmar_recolhimento(id_pedido){
     if (pedido) { // se achou alguma coisa
         if(confirm("Confirmar recolhimento do pedido?")){
             alert('Pedido: ' + pedido.id_Pedido + ', Status alterado com sucesso');
-            pedidos = pedidos.filter(ped => ped.id_Pedido !== pedido.id_Pedido);
+            //pedidos = pedidos.filter(ped => ped.id_Pedido !== pedido.id_Pedido);
             listarPedidos(pedidos);
         }
     }else{
