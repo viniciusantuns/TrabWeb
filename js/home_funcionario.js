@@ -51,7 +51,7 @@ function confirmar_recolhimento(id_pedido){
     if (pedido) { // se achou alguma coisa
         if(confirm("Confirmar recolhimento do pedido?")){
             alert('Pedido: ' + pedido.id_Pedido + ', Status alterado com sucesso');
-            //pedidos = pedidos.filter(ped => ped.id_Pedido !== pedido.id_Pedido);
+            pedidos = pedidos.filter(ped => ped.id_Pedido !== pedido.id_Pedido);
             listarPedidos(pedidos);
         }
     }else{
