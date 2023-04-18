@@ -17,13 +17,11 @@ pedidos = [
 var select_status = document.querySelector("#st_pedidos");
 
 select_status.addEventListener('change',(event)=>{
-    listarPedidos(event.currentTarget.value, pedidos);
+    listarPedidos(event.currentTarget.value, pedidos,dataincio,datafim);
 })
 
-
-
 var table 
-function listarPedidos(status, pedidos)
+function listarPedidos(status, pedidos, datainicio, datafim)
 {
     // mudar para fetch() request depois
     table  = document.getElementById("tabelap");
@@ -32,12 +30,12 @@ function listarPedidos(status, pedidos)
 
     //filtro dos pedidos
     let pedidos_filtrados;
+    //trocar o status pela data
     if(status === ""){
         pedidos_filtrados = pedidos;
         // console.log(pedidos_filtrados);
     }else{ 
-        pedidos_filtrados = pedidos.filter(pedido => pedido.status === status);
-        // console.log(pedidos_filtrados);
+        pedidos_filtrados = pedidos.filter(pedido => pedido.dt_pedido >= datainicio & pedido.dt_pedido <= datafim);
     }
 
     //desenhando a tabela
@@ -52,6 +50,7 @@ function listarPedidos(status, pedidos)
         cell2.innerHTML = element.dt_pedido;
         cell3.innerHTML = element.valor;
         cell4.innerHTML = element.status;
+        row.className += ` ${element.status.toLowerCase()}`
         if(element.status === 'Pago'){
             cell5.innerHTML = "<button onclick='finalizar_pedido(this.value)' value="+element.id_Pedido +" id='btn_ccl_pedido'class='btn btn-success'>Finalizar Pedido</button>"
         }if(element.status == 'Em Aberto'){

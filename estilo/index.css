@@ -15,3 +15,27 @@ main {
     height: 39vw;
     margin: 3%;
 }
+
+.aberto {
+    background: rgba(246, 246, 76, 0.705);
+}
+
+.recolhido {
+    background: rgba(110, 109, 109, 0.854);
+}
+
+.aguardando{
+    background: rgba(0, 100, 128, 0.622);
+}
+
+.pago {
+    background: rgba(249, 174, 70, 0.616);
+}
+
+.finalizado {
+    background: rgb(142, 244, 105);
+}
+
+.cancelado {
+    background: rgb(242, 101, 124);
+}

@@ -183,8 +183,6 @@ $(document).ready(function() {
     $(".pedidos tr").each(function() {
         var valorColuna = $(this).find('td:nth-child(5)').text().trim();
         var botaoColuna = $(this).find('td:nth-child(8) button');
-        console.log("a");
-        console.log(valorColuna);
         if (valorColuna === 'EM ABERTO') {
             botaoColuna.show();
         } else {
