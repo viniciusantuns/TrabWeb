@@ -5,10 +5,10 @@ document.addEventListener("DOMContentLoaded", function(e) {
 
 
 pedidos = [
-    { id_Pedido: "1", status: "Cancelado", dt_pedido: "30/02/2022", valor: "200,00" },
+    { id_Pedido: "1", status: "Cancelado", dt_pedido: "28/02/2022", valor: "200,00" },
     { id_Pedido: "2", status: "Finalizado", dt_pedido: "02/03/2022",  valor: "400,00" },
-    { id_Pedido: "3", status: "Pago", dt_pedido: "31/03/2023", valor: "150,00" },
-    { id_Pedido: "4", status: "Aguardando Pagamento", dt_pedido: "31/03/2022",  valor: "206,00" },
+    { id_Pedido: "3", status: "Pago", dt_pedido: "20/03/2023", valor: "150,00" },
+    { id_Pedido: "4", status: "Aguardando Pagamento", dt_pedido: "20/03/2022",  valor: "206,00" },
     { id_Pedido: "5", status: "Recolhido", dt_pedido: "11/04/2023", valor: "220,00"},
     { id_Pedido: "6", status: "Em Aberto", dt_pedido: "01/05/2023", valor: "406,00"}
 ]
@@ -16,12 +16,21 @@ pedidos = [
 
 var select_status = document.querySelector("#st_pedidos");
 
-select_status.addEventListener('change',(event)=>{
-    listarPedidos(event.currentTarget.value, pedidos,dataincio,datafim);
+$(".data_inicio,.data_fim").on("change", function(){
+
+// })
+
+// select_status.addEventListener('change',(event)=>{
+    var data_inicio = $(".data_inicio").val();
+    var data_fim = $(".data_fim").val();
+    var status = $("#st_pedidos").val();
+    if(data_inicio !== "" && data_fim !== ""){
+        listarPedidos(status, pedidos,data_inicio,data_fim);
+    }
 })
 
 var table 
-function listarPedidos(status, pedidos, datainicio, datafim)
+function listarPedidos(status, pedidos, data_inicio, data_fim)
 {
     // mudar para fetch() request depois
     table  = document.getElementById("tabelap");
@@ -35,7 +44,30 @@ function listarPedidos(status, pedidos, datainicio, datafim)
         pedidos_filtrados = pedidos;
         // console.log(pedidos_filtrados);
     }else{ 
-        pedidos_filtrados = pedidos.filter(pedido => pedido.dt_pedido >= datainicio & pedido.dt_pedido <= datafim);
+        var lala = data_inicio.split("-");
+        var lala2= data_fim.split("-");
+        data_inicio = lala[1] + "/"+ lala[2] +"/"+ lala[0];
+        data_fim = lala2[1] + "/"+ lala2[2] +"/"+ lala2[0];
+
+        data_fim = new Date(data_fim);
+        data_fim = data_fim.getTime();
+
+        data_inicio = new Date(data_inicio);
+        data_inicio = data_inicio.getTime();
+
+        pedidos_filtrados = pedidos.filter( function(pedido){ 
+            var joao = pedido.dt_pedido.split("/");
+            joao = joao[1] + "/"+ joao[0] +"/"+ joao[2];    
+            console.log(joao);
+
+            var a = new Date(joao);
+            a = a.getTime()
+            console.log(a);
+
+            
+            if(a >= data_inicio && a <= data_fim){
+                    return pedido
+                }});
     }
 
     //desenhando a tabela
