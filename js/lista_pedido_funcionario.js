@@ -17,7 +17,6 @@ pedidos = [
 var select_status = document.querySelector("#st_pedidos");
 
 $(".data_inicio, .data_fim").on("change", function(){
-
     var data_inicio = $(".data_inicio").val();
     var data_fim = $(".data_fim").val();
     var status = $("#st_pedidos").val();
@@ -28,15 +27,16 @@ $(".data_inicio, .data_fim").on("change", function(){
 
 
 select_status.addEventListener('change',(event)=>{
-    if(event.currentTarget.value == 'todos'){
-        listarPedidos(event.currentTarget.value, pedidos)
-    }else if(event.currentTarget.value == 'hoje'){
-        var dt = new Date();
-        dt = dt.toLocaleDateString();
-        var la= dt.split("/");
-        datas = la[2] + "/"+ la[1] +"/"+ la[0];
-        listarPedidos(event.currentTarget.value, pedidos,datas,datas)
-    }
+    atualizaTabela();
+    // if(event.currentTarget.value == 'todos'){
+    //     listarPedidos(event.currentTarget.value, pedidos)
+    // }else if(event.currentTarget.value == 'hoje'){
+    //     var dt = new Date();
+    //     dt = dt.toLocaleDateString();
+    //     var la= dt.split("/");
+    //     datas = la[2] + "/"+ la[1] +"/"+ la[0];
+    //     listarPedidos(event.currentTarget.value, pedidos,datas,datas)
+    // }
 });
 
 
@@ -113,7 +113,8 @@ function confirmar_recolhimento(id_pedido){
             alert('Pedido: ' + pedido.id_Pedido + ', Status alterado com sucesso');
             // pedidos = pedidos.filter(ped => ped.id_Pedido !== pedido.id_Pedido);
             pedido.status="Recolhido";
-            listarPedidos('todos', pedidos);
+            // listarPedidos('todos', pedidos);
+            atualizaTabela();
         }
     }else{
         console.log('Pdsas');
@@ -127,7 +128,8 @@ function confirmar_lavagem(id_pedido){
             alert('Pedido: ' + pedido.id_Pedido + ', Status alterado com sucesso');
             // pedidos = pedidos.filter(ped => ped.id_Pedido !== pedido.id_Pedido);
             pedido.status="Aguardando Pagamento";
-            listarPedidos('todos', pedidos);
+            // listarPedidos('todos', pedidos);
+            atualizaTabela();
         }
     }else{
         console.log('Pdsas');
@@ -142,10 +144,29 @@ function finalizar_pedido(id_pedido){
             alert('Pedido: ' + pedido.id_Pedido + ', Status alterado com sucesso');
             // pedidos = pedidos.filter(ped => ped.id_Pedido !== pedido.id_Pedido);
             pedido.status= "Finalizado";
-            listarPedidos('todos', pedidos);
+            // listarPedidos('todos', pedidos);
+            atualizaTabela();
         }
     }else{
         console.log('Pdsas');
     }
 
+}
+
+
+function atualizaTabela(){
+    if(select_status.value == 'todos'){
+        listarPedidos('todos', pedidos);
+    }else if(select_status.value == 'hoje'){
+        var dt = new Date();
+        dt = dt.toLocaleDateString();
+        var la= dt.split("/");
+        datas = la[2] + "/"+ la[1] +"/"+ la[0];
+        listarPedidos('hoje', pedidos,datas,datas);
+    }else{
+        var data_inicio = $(".data_inicio").val();
+        var data_fim = $(".data_fim").val();
+        var status = $("#st_pedidos").val();
+        listarPedidos('hoje', pedidos,data_inicio, data_fim);
+    }
 }
