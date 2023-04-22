@@ -1,6 +1,6 @@
 
 document.addEventListener("DOMContentLoaded", function(e) {
-    listarPedidos('',pedidos);
+    listarPedidos('todos',pedidos);
 });
 
 
@@ -16,21 +16,32 @@ pedidos = [
 
 var select_status = document.querySelector("#st_pedidos");
 
-$(".data_inicio,.data_fim").on("change", function(){
+$(".data_inicio, .data_fim").on("change", function(){
 
-// })
-
-// select_status.addEventListener('change',(event)=>{
     var data_inicio = $(".data_inicio").val();
     var data_fim = $(".data_fim").val();
     var status = $("#st_pedidos").val();
     if(data_inicio !== "" && data_fim !== ""){
-        listarPedidos(status, pedidos,data_inicio,data_fim);
+        listarPedidos(status, pedidos,data_inicio, data_fim);
     }
 })
 
+
+select_status.addEventListener('change',(event)=>{
+    if(event.currentTarget.value == 'todos'){
+        listarPedidos(event.currentTarget.value, pedidos)
+    }else if(event.currentTarget.value == 'hoje'){
+        var dt = new Date();
+        dt = dt.toLocaleDateString();
+        var la= dt.split("/");
+        datas = la[2] + "/"+ la[1] +"/"+ la[0];
+        listarPedidos(event.currentTarget.value, pedidos,datas,datas)
+    }
+});
+
+
 var table 
-function listarPedidos(status, pedidos, data_inicio, data_fim)
+function listarPedidos(status, pedidos, data_inicio = null, data_fim = null)
 {
     // mudar para fetch() request depois
     table  = document.getElementById("tabelap");
@@ -40,10 +51,11 @@ function listarPedidos(status, pedidos, data_inicio, data_fim)
     //filtro dos pedidos
     let pedidos_filtrados;
     //trocar o status pela data
-    if(status === ""){
+    if(status === "todos"){
         pedidos_filtrados = pedidos;
-        // console.log(pedidos_filtrados);
+
     }else{ 
+
         var lala = data_inicio.split("-");
         var lala2= data_fim.split("-");
         data_inicio = lala[1] + "/"+ lala[2] +"/"+ lala[0];
@@ -58,16 +70,14 @@ function listarPedidos(status, pedidos, data_inicio, data_fim)
         pedidos_filtrados = pedidos.filter( function(pedido){ 
             var joao = pedido.dt_pedido.split("/");
             joao = joao[1] + "/"+ joao[0] +"/"+ joao[2];    
-            console.log(joao);
+            //console.log(joao);
 
             var a = new Date(joao);
             a = a.getTime()
-            console.log(a);
-
-            
+            //console.log(a);
             if(a >= data_inicio && a <= data_fim){
                     return pedido
-                }});
+            }});
     }
 
     //desenhando a tabela
@@ -95,17 +105,19 @@ function listarPedidos(status, pedidos, data_inicio, data_fim)
 }
 
 function confirmar_recolhimento(id_pedido){
+
     let pedido = pedidos.find(ped => ped.id_Pedido == id_pedido);
+    console.log(pedido);
     if (pedido) { // se achou alguma coisa
         if(confirm("Confirmar recolhimento do pedido?")){
             alert('Pedido: ' + pedido.id_Pedido + ', Status alterado com sucesso');
-            pedidos = pedidos.filter(ped => ped.id_Pedido !== pedido.id_Pedido);
-            listarPedidos(pedidos);
+            // pedidos = pedidos.filter(ped => ped.id_Pedido !== pedido.id_Pedido);
+            pedido.status="Recolhido";
+            listarPedidos('todos', pedidos);
         }
     }else{
         console.log('Pdsas');
     }
-
 }
 
 function confirmar_lavagem(id_pedido){
@@ -113,8 +125,9 @@ function confirmar_lavagem(id_pedido){
     if (pedido) { // se achou alguma coisa
         if(confirm("Confirmar lavagem das roupas?")){
             alert('Pedido: ' + pedido.id_Pedido + ', Status alterado com sucesso');
-            pedidos = pedidos.filter(ped => ped.id_Pedido !== pedido.id_Pedido);
-            listarPedidos(pedidos);
+            // pedidos = pedidos.filter(ped => ped.id_Pedido !== pedido.id_Pedido);
+            pedido.status="Aguardando Pagamento";
+            listarPedidos('todos', pedidos);
         }
     }else{
         console.log('Pdsas');
@@ -127,8 +140,9 @@ function finalizar_pedido(id_pedido){
     if (pedido) { // se achou alguma coisa
         if(confirm("Realmente deseja finalizar o pedido?")){
             alert('Pedido: ' + pedido.id_Pedido + ', Status alterado com sucesso');
-            pedidos = pedidos.filter(ped => ped.id_Pedido !== pedido.id_Pedido);
-            listarPedidos(pedidos);
+            // pedidos = pedidos.filter(ped => ped.id_Pedido !== pedido.id_Pedido);
+            pedido.status= "Finalizado";
+            listarPedidos('todos', pedidos);
         }
     }else{
         console.log('Pdsas');

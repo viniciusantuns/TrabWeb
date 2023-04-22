@@ -40,7 +40,7 @@ function listarPedidos(l_pedidos)
         cell2.innerHTML = element.dt_pedido;
         cell3.innerHTML = element.valor;
         cell4.innerHTML = element.status;
-        cell5.innerHTML = "<button id='btn-confirm-recol' onclick='confirmar_recolhimento(this.value)' value="+element.id_Pedido+" class='recolhido btn btn-primary' >Confirmar Recolhimento</button>"
+        cell5.innerHTML = "<button id='btn-confirm-recol' onclick='confirmar_recolhimento(this.value)' value="+element.id_Pedido+" class='btn btn-primary'>Confirmar Recolhimento</button>"
 	
     });
 
