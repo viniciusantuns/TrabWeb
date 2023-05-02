@@ -64,7 +64,7 @@ function listarProdutos(){
         cell3.innerHTML = element.valor;
         cell4.innerHTML = element.prazo + " Dias";
         cell5.innerHTML = "<button id='btn-confirm-recol' onclick='editarProduto(this.value)' value="+element.id+" class='btn btn-primary'>Editar</button>\
-        <button id='btn-confirm-recol' onclick='excluirProduto(this.value)' value="+element.id+" class='btn btn-primary'>Excluir</button>";
+        <button id='btn-confirm-recol' onclick='excluirProduto(this.value)' value="+element.id+" class='btn btn-danger'>Excluir</button>";
     });
 
 }
