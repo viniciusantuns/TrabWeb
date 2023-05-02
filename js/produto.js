@@ -90,11 +90,6 @@ function editarProduto(id){
     document.querySelector("#preco_1").value = produt.valor;
     document.querySelector("#prazo_1").value = produt.prazo;
 
-
-
-
-
-
 }
 
 
