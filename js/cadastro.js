@@ -1,9 +1,9 @@
-
+var t ;
 const form = document.querySelector("#registerForm");
 
 
 form.onsubmit = event =>{
-  console.log("teste");
+    event.preventDefault();
     var ok = true;
     if(!validarCpf(document.querySelector("#cpf").value)){
         ok = false;
@@ -13,20 +13,41 @@ form.onsubmit = event =>{
       ok = false;
      alert('email invalido');
     }
-    if(isNaN(document.querySelector("#telefone").value)){
+    if(!validaTelefone(document.querySelector("#telefone").value)){
       ok = false;
       alert('telefone invalido');
     }
 
     if(ok){  
-      console.log("form ok");
+      alert("Registro realizado com sucesso");
+      window.location.href = "./login.html";
     }
-    event.preventDefault();
+    
+}
+
+function validaTelefone(telefone){
+  telefone = telefone.replace(/[^0-9]/g,"");
+  t = telefone;
+  
+  if(isNaN(telefone)){
+    return false;
+  }
+
+  if(telefone.length < 11 || telefone.length > 11){
+    return false;
+  }
+
+  return true;
 }
 
 function validateEmail(email) {
-  var re = /\S+@\S+\.\S+/;
-  return re.test(email);
+  if (email != '' || email != null){
+    var re = /\S+@\S+\.\S+/;
+    return re.test(email);
+  }else{
+    return false;
+  }
+  
 }
 
 
@@ -67,6 +88,8 @@ function vldPrimeiroDigito(cpf) {
   }
   
   function validarCpf(cpf) {
+    cpf= cpf.replace(/[^0-9]/g,"");
+
     if (cpf.length != 11) {
       return false;
     }
@@ -108,6 +131,30 @@ function meu_callback(conteudo) {
         alert("CEP não encontrado.");
     }
 }
+
+document.getElementById('cep').addEventListener('keyup', function(e){
+  if(!this.value) return "";
+  this.value=this.value.replace(/[^0-9]/g,"");
+  this.value = this.value.replace(/(\d{5})(\d)/,'$1-$2');
+
+})
+
+document.getElementById('telefone').addEventListener('keyup', function(e){
+  if(!this.value) return "";
+  this.value=this.value.replace(/[^0-9]/g,"");
+  this.value=this.value.replace(/(\d{2})(\d)/,"($1) $2");
+  this.value=this.value.replace(/(\d{5})(\d)/,"$1-$2");
+
+});
+
+document.getElementById('cpf').addEventListener('keyup',function(event){
+    if(!this.value) return "";
+    this.value=this.value.replace(/[^0-9]/g,"")
+    this.value=this.value.replace(/(\d{3})(\d)/,"$1.$2")
+    this.value=this.value.replace(/(\d{3})(\d)/,"$1.$2")
+    this.value=this.value.replace(/(\d{3})(\d{1,2})$/,"$1-$2")
+
+})
 
 function pesquisacep(valor) {
 
