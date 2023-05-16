@@ -11,7 +11,7 @@ form_login.onsubmit = event =>{
 
     if(ok){
         if(document.querySelector("#email").value == 'cliente@cliente.com'){
-            window.location.href = "./index.html";
+            window.location.href = "./index_cliente.html";
         }else if(document.querySelector("#email").value == 'funcionario@funcionario.com'){
             window.location.href = "./index_funcionario.html";
         }
