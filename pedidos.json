@@ -1,8 +1,0 @@
-[
-    { "numeroPedido": "1", "status": "Cancelado", "dt_pedido": "11/04/2023", "valor": "100,00", "cor": "FF0000" },
-    { "numeroPedido": "2", "status": "Aguardando Pagamento", "dt_pedido": "01/05/2023",  "valor": "200,00", "cor": "0080FF"},
-    { "numeroPedido": "3", "status": "Recolhido", "dt_pedido": "31/03/2023", "valor": "75,00", "cor": "808080"},
-    { "numeroPedido": "4", "status": "Em aberto", "dt_pedido": "31/03/2022",  "valor": "103,00", "cor": "FFFF00"},
-    { "numeroPedido": "5", "status": "Pago", "dt_pedido": "02/03/2022", "valor": "110,00", "cor": "FF8000"},
-    { "numeroPedido": "6", "status": "Finalizado", "dt_pedido": "30/02/2022", "valor": "203,00", "cor": "00CC00"}
-]
