@@ -1,0 +1,98 @@
+<body>
+    <section class="vh-100" style="background-color:#237c9ffb;">
+        <div class="container py-5 h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col col-xl-10">
+                    <div class="card" style="border-radius: 1rem;">
+                        <div class="row g-0">
+                            <div class="col-md-6 col-lg-5 d-none d-md-block">
+                                <img src="Imagens\lavanderia.jpg" alt="login form" class="img-fluid"
+                                    style="border-radius: 1rem 0 0 1rem;" />
+                            </div>
+                            <div class="col-md-6 col-lg-7 d-flex align-items-center">
+                                <div class="card-body p-4 p-lg-5 text-black">
+
+                                    <div class="d-flex align-items-center mb-3 pb-1">
+                                        <i class="fas fa-cubes fa-2x me-3" style="color: #ff6219;"></i>
+                                        <span class="h1 fw-bold mb-0"></span>
+                                    </div>
+                                    <div class="box">
+                                        <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Realize seu cadastro</h5>
+
+                                        <form #formRegistro="ngForm">
+                                            <div class="field">
+                                                <div class="control">
+                                                    <div class="form-outline mb-4">
+                                                        <label class="form-label" for="nome">Nome Completo</label>
+                                                        <input name="nome" [(ngModel)]='nome' type="text" id="nome"
+                                                            class="form-control form-control-lg" placeholder="Nome Completo"
+                                                            minlength="3" maxlength="30" required />
+                                                        
+                                                        <label class="form-label" for="cpf">CPF</label>
+                                                        <input required name="cpf" [(ngModel)]="cpf" (keyup)="mask_cpf()" type="text" id="cpf" class="form-control form-control-lg"
+                                                            placeholder="XXX.XXX.XXX-XX" maxlength="14" />
+                                                        
+                                                        <label class="form-label" for="E-mail">E-mail</label>
+                                                        <input type="email" [(ngModel)]="email" name="email" class="form-control form-control-lg" placeholder="exemplo@exemplo.com" required/>
+                                                        
+                                                        <label class="form-label" for="telefone">Telefone</label>
+                                                        <input name="telefone" [(ngModel)]='telefone' (keyup)="mask_telefone()" type="text" id="telefone" required
+                                                            class="form-control form-control-lg" placeholder="(DDD) XXXXX-XXXX"
+                                                            minlength="15" maxlength="15" />
+                                                        
+
+                                                        <label class="form-label" for="cep">CEP</label>
+                                                        <input required name="cep" [(ngModel)]='Cep.cep' #cep_F (blur)="pesquisacep(Cep.cep)" (keyup)="msk_cep()" type="text" id="cep"
+                                                            class="form-control form-control-lg" placeholder="XXXXX-XXX"
+                                                            minlength="8" />
+                                                        
+                                                        
+                                                        <div *ngIf="Cep.cep">
+                                                            <label class="form-label" for="rua">Rua</label>
+                                                            <input name="rua" [(ngModel)]="Cep.logradouro"  type="text" id="rua" class="form-control form-control-lg"
+                                                                placeholder="Rua" />
+                                                            
+                                                            <label class="form-label" for="numero">Número</label>
+                                                            <input  type="number" id="numero"  
+                                                                class="form-control form-control-lg" placeholder="Número" />
+                                                            
+
+                                                            <label class="form-label" for="cidade">Cidade</label>
+                                                            <input name="cidade" [(ngModel)]="Cep.localidade" type="text" id="cidade"
+                                                                class="form-control form-control-lg" placeholder="Cidade" />
+                                                            
+
+                                                            <label class="form-label" for="estado">UF</label>
+                                                            <input name="uf" [(ngModel)]="Cep.uf" type="text" id="estado"
+                                                                class="form-control form-control-lg" placeholder="Estado" />
+
+                                                            <label class="form-label" for="bairro">Bairro</label>
+                                                            <input  name="bairro" [(ngModel)]="Cep.bairro" type="text" id="bairro"
+                                                                class="form-control form-control-lg" placeholder="Bairro" />
+                                                            
+                                                            <label class="form-label" for="complemento">Complemento</label>
+                                                            <input  name="complemento" [(ngModel)]="Cep.complemento" type="text" id="complemento"
+                                                                class="form-control form-control-lg"
+                                                                placeholder="Complemento" />
+                                                            
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="pt-1 mb-4">
+                                                        <button [disabled]="!formRegistro.form.valid" (click)="registrar(formRegistro)" class="btn btn-dark btn-lg btn-block" type="button">Registrar</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            Já possui uma conta?  <a [routerLink]="['/login']">Faça login</a>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
