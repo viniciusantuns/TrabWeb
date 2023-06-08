@@ -1,1 +1,32 @@
-<p>home-cliente works!</p>
+<app-navbar-cliente></app-navbar-cliente>
+<div class="pendentes">
+    <div class="container">
+        <div class="table-wrap">
+            <table class="table justify-content-center pedidos">
+                <thead>
+                    <th>Pedido</th>
+                    <th>Valor</th>
+                    <th>Status</th>
+                    <th>Prazo</th>
+                    <th>Ações?(rever se precisa disso depois)</th>
+                </thead>
+               <tbody>
+                    <tr *ngFor="let pedido of pedidos">
+                        <td> {{pedido.id_pedido}}</td>
+                        <td> {{pedido.valor_pedido}} </td>
+                        <td> {{pedido.status_pedido}}</td>
+                        <td> {{pedido.prazo_pedido}} Dias</td>
+                        <td class="text-center" style="width: 300px">
+                            <a [routerLink]="['/cliente/consulta_pedido', pedido.id_pedido]" href="#" title="Consultar" alt="Consultar" class="btn btn-primary btn-xs">
+                                <i class="fa fa-edit" aria-hidden="true"></i> Consultar Pedido
+                            </a>
+                            <!-- [routerLink]="['/cliente/consulta_pedido', pedido.id_pedido]" href="#" title="Consultar" alt="Consultar" class="btn btn-xs btn-info">
+                                <i class="fa fa-edit" aria-hidden="true"></i> Consultar Pedido -->
+                        </td>
+                    </tr>
+               </tbody>
+            </table>
+            <p *ngIf="pedidos.length===0">Nenhum pedido em aberto.</p>
+        </div>
+    </div>
+</div>

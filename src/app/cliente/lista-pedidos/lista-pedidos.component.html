@@ -1,0 +1,46 @@
+<app-navbar-cliente></app-navbar-cliente>
+<div class="pendentes">
+    <select id="st_pedidos"  #st="ngModel" [(ngModel)]="status"  (ngModelChange)="listaPedidosFiltro(st.value)" class="form-select mb-4">
+      <option value="">Todos</option>
+      <option value="Aprovado">Aprovado</option>
+      <option value="Em aberto">Em Aberto</option>
+      <option value="Cancelado">Cancelado</option>
+      <option value="Finalizado">Finalizado</option>
+      <option value="Aguardando Pagamento">Aguardando Pagamento</option>
+    </select>
+
+    <div class="container">
+      <div class="table-wrap">
+        <table nome="tabelap" class="table" id="tabelap">
+          <thead>
+            <tr>
+              <th scope="col">Pedido</th>
+              <th scope="col">Data</th>
+              <th scope="col">Valor</th>
+              <th scope="col">Status</th>
+              <th scope="col">Ações</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let pedido of pedidos">
+                <td> {{pedido.id_pedido}}</td>
+                <td> {{pedido.dt_pedido}} </td>
+                <td> {{pedido.valor_pedido}}</td>
+                <td> {{pedido.status_pedido}}</td>
+
+                <td>
+                    <button *ngIf="pedido.status_pedido === 'Aguardando Pagamento'" (click)="pagarPedido(pedido.id_pedido)" class="ms-2 btn btn-warning">Pagar Pedido</button>
+
+                    <button *ngIf="pedido.status_pedido === 'Em aberto'" (click)="cancelarPedido(pedido.id_pedido)" class="ms-2 btn btn-danger">Cancelar Pedido</button>
+
+                    <button [routerLink]="['/cliente/consulta_pedido', pedido.id_pedido]" href="#" class="ms-2 btn btn-primary">Detalhes</button>
+                    <!-- realizar criação dessa rota depois -->
+                </td>
+
+            </tr>
+          </tbody>
+        </table>
+        <p *ngIf="pedidos.length===0">Nenhum pedido.</p>
+      </div>
+    </div>
+</div>
