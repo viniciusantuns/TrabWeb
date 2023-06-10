@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 
+import { AuthModule } from './auth/auth.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginModule } from './login/login.module';
@@ -16,6 +17,7 @@ import { ComponentsModule } from './components/components.module';
     AppComponent
   ],
   imports: [
+    AuthModule,
     BrowserModule,
     AppRoutingModule,
     LoginModule,

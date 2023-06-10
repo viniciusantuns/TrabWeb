@@ -1,5 +1,26 @@
 import { Component, OnInit } from '@angular/core';
 import { ClienteService } from '../services/cliente.service';
+import { Produto } from 'src/app/shared/models/produto.model';
+
+class ItemPedido extends Produto {
+  constructor(
+    id: number,
+    nome: string,
+    valor: number,
+    prazo: number,
+    public quantidade: number
+  ) {
+    super(id, nome, valor, prazo);
+  }
+}
+
+class Orcamento{
+  constructor(
+    public lista:ItemPedido[] = [],
+    public valorTotal?: number,
+    public prazo_final?: number
+  ){}
+}
 
 
 @Component({
@@ -7,17 +28,16 @@ import { ClienteService } from '../services/cliente.service';
   templateUrl: './novo-pedido.component.html',
   styleUrls: ['./novo-pedido.component.css']
 })
+
+
 export class NovoPedidoComponent implements OnInit {
 
-  produtos:any[] = [];
-  orcamento:any[] = [];
+  produtos:Produto[] = [];
+  orcamento:Orcamento = new Orcamento();
 
   quantidade!: number;
 
-  totalOrcamento!: number;
-
-  idProdutoSelecionado!: string;
-
+  produto!: string;
 
   constructor(private clienteService: ClienteService){
 
@@ -27,36 +47,37 @@ export class NovoPedidoComponent implements OnInit {
     this.produtos = this.clienteService.listarProdutos();
   }
 
-  adicionarItem(){
-    //{id: 5, nome: "meia", valor: "9",  prazo: 1}
-    //produtoSelecionado tem o id do produto;
-    let produto = this.produtos.find(p => p.id === parseInt(this.idProdutoSelecionado));
-    if(produto){
+  adicionarItem() {
 
-      //procura dentro do orçamento se já existe, se já atualiza
-      if(this.orcamento.find(p=>p.id === produto.id)){
-        let item = this.orcamento.find(p=>p.id === produto.id);
-        item.quantidade += this.quantidade;
+    let prod: Produto | undefined = this.produtos.find(p => p.id === parseInt(this.produto));
+  
+    if (prod) {
+      
+      if (this.orcamento.lista.find(p =>p.id === prod?.id)) { //se tem o produto na lista
+          let item = this.orcamento.lista.find(p => p.id === prod?.id);
 
+          if (item){
+            item.quantidade += this.quantidade;
+
+          }
+        
       }else{
-        //adiciona
-        this.orcamento.push({id:parseInt(produto.id), nome:produto.nome, valor:produto.valor, quantidade: this.quantidade, prazo:produto.prazo});
+        let itemOrcamento = new ItemPedido(prod.id, prod.nome, prod.valor, prod.prazo, this.quantidade);
+        this.orcamento.lista.push(itemOrcamento);
+
       }
+      
     }
-
+    
   }
-
 
   removeItem(id:number){
-    let item = this.orcamento.find(it => it.id === id);
+    let item = this.orcamento.lista.find(p => p.id === id);
     if(item){
-      this.orcamento = this.orcamento.filter(i => i.id != item.id);
+      this.orcamento.lista = this.orcamento.lista.filter(i => i.id != item?.id)
     }
 
-
   }
-
-
 
 
 }

@@ -8,9 +8,9 @@
                         <div class="row">
                             <div class="col-md-2">
                                 <label for="pecas">Produto:</label>
-                                <select [(ngModel)]="idProdutoSelecionado"  class="form-select" name="Produto" id="pecas">
+                                <select [(ngModel)]="produto"  class="form-select" name="Produto" id="pecas">
                                     <option value="" selected disabled>Selecione um produto</option>
-                                    <option *ngFor="let produto of produtos" value="{{produto.id}}" >{{ produto.nome }}</option>
+                                    <option *ngFor="let prod of produtos" value="{{prod.id}}" >{{ prod.nome }}</option>
                                 </select>
                             </div>
                             <div class="col-md-1">
@@ -19,7 +19,7 @@
                             </div>
                         </div>
                         <div id="btn_add" class="col-md-2">
-                            <button (click)="adicionarItem()" id="btn-item" class="btn btn-primary">Adicionar</button>
+                            <button [disabled]="produto == undefined" (click)="adicionarItem()" id="btn-item" class="btn btn-primary">Adicionar</button>
                         </div>
                     </form>
                 </div>  
@@ -41,7 +41,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let item of orcamento">
+                <tr *ngFor="let item of orcamento.lista">
                     <td> {{item.nome}}</td>
                     <td> {{item.quantidade}} </td>
                     <td> {{item.valor}}</td>
@@ -50,7 +50,7 @@
                 </tr>
             </tbody>
         </table>
-        <p *ngIf="orcamento.length === 0">Nenhum item para orçamento.</p>
+        <p *ngIf="orcamento.lista.length === 0">Nenhum item para orçamento.</p>
     </div>
 </div>
 
