@@ -4,13 +4,9 @@
         <a class="nav-link active" [routerLink]="['/cliente/pedidos']">Lista de Pedidos</a>
         <a class="nav-link active" [routerLink]="['/cliente/pedido']">Consultar Pedido</a>
         <a class="nav-link active" [routerLink]="['/novo-pedido']">Realizar Pedido</a>
-        <div class="navbar-brand" id="">
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item">
-                    <span *ngIf="GetusuarioLogado"> {{GetusuarioLogado.nome}}</span>
-                    <a class="nav-link active" href="#" (click)="logout()">Sair</a>
-                </li>
-            </ul>
-        </div>
+        <div class="idlogout">
+        <span *ngIf="GetusuarioLogado"> {{GetusuarioLogado.nome}}</span>
+        <a class="nav-link active" href="#" (click)="logout()">Sair</a>
+    </div>
     </div>
 </nav>

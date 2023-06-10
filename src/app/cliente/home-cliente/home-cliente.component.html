@@ -12,10 +12,10 @@
                 </thead>
                <tbody>
                     <tr *ngFor="let pedido of pedidos">
-                        <td> {{pedido.id_pedido}}</td>
-                        <td> {{pedido.valor_pedido}} </td>
-                        <td> {{pedido.status_pedido}}</td>
-                        <td> {{pedido.prazo_pedido}} Dias</td>
+                        <td>{{pedido.id_pedido}}</td>
+                        <td>{{pedido.valor_pedido}} </td>
+                        <td>{{pedido.status_pedido}}</td>
+                        <td>{{pedido.prazo_pedido}} Dias</td>
                         <td class="text-center" style="width: 300px">
                             <a [routerLink]="['/cliente/consulta_pedido', pedido.id_pedido]" href="#" title="Consultar" alt="Consultar" class="btn btn-primary btn-xs">
                                 <i class="fa fa-edit" aria-hidden="true"></i> Consultar Pedido

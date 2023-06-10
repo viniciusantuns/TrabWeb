@@ -1,16 +1,15 @@
 <app-navbar-cliente></app-navbar-cliente>
 <div class="pendentes">
-    <select id="st_pedidos"  #st="ngModel" [(ngModel)]="status"  (ngModelChange)="listaPedidosFiltro(st.value)" class="form-select mb-4">
-      <option value="">Todos</option>
-      <option value="Aprovado">Aprovado</option>
-      <option value="Em aberto">Em Aberto</option>
-      <option value="Cancelado">Cancelado</option>
-      <option value="Finalizado">Finalizado</option>
-      <option value="Aguardando Pagamento">Aguardando Pagamento</option>
-    </select>
-
     <div class="container">
       <div class="table-wrap">
+        <select id="st_pedidos"  #st="ngModel" [(ngModel)]="status"  (ngModelChange)="listaPedidosFiltro(st.value)" class="form-select mb-4">
+          <option value="">Todos</option>
+          <option value="Aprovado">Aprovado</option>
+          <option value="Em aberto">Em Aberto</option>
+          <option value="Cancelado">Cancelado</option>
+          <option value="Finalizado">Finalizado</option>
+          <option value="Aguardando Pagamento">Aguardando Pagamento</option>
+        </select>
         <table nome="tabelap" class="table" id="tabelap">
           <thead>
             <tr>

@@ -7,20 +7,22 @@
                     <form id="form_pedido" action="">
                         <div class="row">
                             <div class="col-md-2">
-                                <label for="pecas">Produto:</label>
-                                <select [(ngModel)]="produto"  class="form-select" name="Produto" id="pecas">
+                                <label for="pecas">Produto</label>
+                                <select [(ngModel)]="produto"  class="form-select" name="Produto" id="pecas" >
                                     <option value="" selected disabled>Selecione um produto</option>
                                     <option *ngFor="let prod of produtos" value="{{prod.id}}" >{{ prod.nome }}</option>
                                 </select>
                             </div>
                             <div class="col-md-1">
-                                <label for="pecas">Quantidade:</label>
+                                <label for="pecas">Quantidade</label>
                                 <input  [(ngModel)]="quantidade" required id="qtd_pecas" class="form-control" name="quantidade" type="number" min="1">
                             </div>
+                            <div id="btn_add" class="col-md-3">
+                                <label> . </label>
+                                <button [disabled]="produto == undefined" (click)="adicionarItem()" id="btn-item" class="btn btn-primary">Adicionar</button>
+                            </div>
                         </div>
-                        <div id="btn_add" class="col-md-2">
-                            <button [disabled]="produto == undefined" (click)="adicionarItem()" id="btn-item" class="btn btn-primary">Adicionar</button>
-                        </div>
+                        
                     </form>
                 </div>  
             </div>

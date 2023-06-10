@@ -1,0 +1,17 @@
+.novo_pedido{  
+    margin: 50px;
+}
+.btn_add{
+    margin-top:50px ;
+}
+.table{
+    margin: 50px;
+margin-top: 0px;
+}
+p{
+margin-left: 50px;
+}
+.col-md-3{
+display: flex;
+flex-direction: column;
+}
