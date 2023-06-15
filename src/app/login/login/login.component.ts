@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit{
     if (this.loginService.usuarioLogado){
       console.log("Existe")
       //verificar o tipo de usuario
-      this.router.navigate(["/home-cliente"])
+      this.router.navigate(["/home-funcionario"])
     }else{
       console.log(this.loginService)
       console.log("Não existe")
@@ -51,8 +51,9 @@ export class LoginComponent implements OnInit{
           this.loginService.usuarioLogado = user;
           this.loading = false;
 
+          
           //por enquanto só tá jogando para tela home de cliente
-          this.router.navigate(["/home-cliente"])
+          this.router.navigate(["/home-funcionario"])
 
         }else{
           this.loading = false;

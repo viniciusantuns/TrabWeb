@@ -1,0 +1,61 @@
+<main>
+    <div class="container">
+      <div class="table-wrap">
+        <table nome="tabelapr" class="table" id="tabelapr">
+          <thead>
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Nome</th>
+              <th scope="col">Valor</th>
+              <th scope="col">Prazo</th>
+              <th scope="col">Ações</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+</main>
+
+
+<div>
+  <button class="btn btn-success" id="nv_produto" type="button">Cadastrar Produto</button>
+</div>
+
+
+<!-- Modal - Detalhes de Pedido -->
+<div class="modal fade" id="modal_prod" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Detalhes do Pedido</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="row">
+              <div class="col-md-6">
+                <label for="">nome</label>
+                  <input type="text" name="" id="nome">
+              </div>
+              <div class="col-md-6">
+                <label for="">preco</label>
+                <input type="text" name="" id="preco">
+              </div>
+              <div class="col-md-6">
+                <label for="">Prazo</label>
+                <input type="text" name="" id="prazo">
+              </div>
+            </div>
+             
+          </div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+              <button type="button" id='nv_s' class="btn btn-success" data-bs-dismiss="modal">Salvar</button>
+          </div>
+      </div>
+  </div>
+</div>

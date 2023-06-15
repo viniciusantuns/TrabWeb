@@ -1,0 +1,25 @@
+<header>
+    <nav class="navbar navbar-expand-lg navbar-primary bg-primary static-top">
+      <div class="container">
+        <a class="navbar-brand" href="#">
+          <a class="nav-link active" [routerLink]="['/home-funcionario']">Home</a>
+        </a>
+        <a class="navbar-brand" href="#">
+          <a class="nav-link active" [routerLink]="['funcionario/pedidos']">Lista de Pedidos</a>
+        </a>
+        <a class="navbar-brand" href="#">
+          <a class="nav-link active" [routerLink]="['funcionario/produtos']">Produtos</a>
+        </a>
+        <a class="navbar-brand" href="#">
+          <a class="nav-link active" [routerLink]="['funcionario/Funcionarios']">Funcionarios</a>
+      </a>
+      <a class="navbar-brand" href="#">
+        <a class="nav-link active" aria-current="funcionaros" href="Relatorio.html">Relatorios</a>
+      </a>
+      <div class="idlogout">
+        <span *ngIf="GetusuarioLogado"> {{GetusuarioLogado.nome}}</span>
+        <a class="nav-link active" href="#" (click)="logout()">Sair</a>
+    </div>
+      </div>
+    </nav>
+  </header>

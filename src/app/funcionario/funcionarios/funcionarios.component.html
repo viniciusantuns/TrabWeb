@@ -1,0 +1,106 @@
+
+<div>
+    <div class="container">
+      <div class="table-wrap">
+        <table nome="tabelafc" class="table" id="tabelafc">
+          <thead>
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Nome</th>
+              <th scope="col">E-mail</th>
+              <th scope="col">Data Nascimento</th>
+              <th scope="col">Senha</th>
+              <th scope="col">Ações</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div>
+    </div>
+
+<div>
+  <button class="btn btn-success" id="nv_funcionario" type="button">Cadastrar Funcionario</button>
+</div>
+
+
+<!-- Modal - Novo Funcionario -->
+<div class="modal fade" id="modal_func" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Cadastro do Funcionario</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="row">
+              <div class="col-md-6">
+                <label for="">nome</label>
+                  <input type="text" name="" id="nome">
+              </div>
+              <div class="col-md-6">
+                <label for="">email</label>
+                <input type="email" name="" id="email">
+              </div>
+              <div class="col-md-6">
+                <label for="">Data Nascimento</label>
+                <input type="date" name="" id="nasc">
+              </div>
+              <div class="col-md-6">
+                <label for="">Senha</label>
+                <input type="password" name="" id="senha">
+              </div>
+            </div>
+             
+          </div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+              <button type="button" id='nv_fc_novo' class="btn btn-success" data-bs-dismiss="modal">Salvar</button>
+          </div>
+      </div>
+  </div>
+</div>
+
+<!-- Modal - Atualizar Funcionario -->
+<div class="modal fade" id="modal_func2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal-dialog modal-lg">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Dados do Funcionario</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-md-6">
+              <label for="">nome</label>
+                <input type="text" name="" id="nome_1">
+            </div>
+            <div class="col-md-6">
+              <label for="">Email</label>
+              <input type="email" name="" id="email_1">
+            </div>
+            <div class="col-md-6">
+              <label for="">Data Nascimento</label>
+              <input type="date" name="" id="nasc_1">
+            </div>
+            <div class="col-md-6">
+                <label for="">Senha</label>
+                <input type="password" name="" id="senha_1">
+              </div>
+          </div>
+           
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+            <button type="button" id='nv_fc'  class="btn btn-success" data-bs-dismiss="modal">Salvar</button>
+        </div>
+    </div>
+</div>
+
+<input type="hidden" name="" id="aux">
+</div>
