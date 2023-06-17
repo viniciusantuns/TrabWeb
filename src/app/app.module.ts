@@ -9,22 +9,13 @@ import { LoginModule } from './login/login.module';
 import { RegistrarModule } from './registrar/registrar.module';
 import { ClienteModule } from './cliente/cliente.module';
 import { ComponentsModule } from './components/components.module';
-import { FuncionarioComponent } from './funcionario/funcionario.component';
-import { HomeFuncionarioComponent } from './funcionario/home-funcionario/home-funcionario.component';
-import { ListaPedidosFuncionarioComponent } from './funcionario/lista-pedidos-funcionario/lista-pedidos-funcionario.component';
-import { ProdutoComponent } from './funcionario/produto/produto.component';
-import { FuncionariosComponent } from './funcionario/funcionarios/funcionarios.component';
+import { FuncionarioModule } from './funcionario/funcionario.module';
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    FuncionarioComponent,
-    HomeFuncionarioComponent,
-    ListaPedidosFuncionarioComponent,
-    ProdutoComponent,
-    FuncionariosComponent
   ],
   imports: [
     AuthModule,
@@ -34,7 +25,8 @@ import { FuncionariosComponent } from './funcionario/funcionarios/funcionarios.c
     RegistrarModule,
     ClienteModule,
     ComponentsModule,
-    FormsModule
+    FormsModule,
+    FuncionarioModule
   ],
   providers: [],
   bootstrap: [AppComponent]

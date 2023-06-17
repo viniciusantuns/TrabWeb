@@ -15,7 +15,8 @@ import { NavbarFuncionarioComponent } from './navbar-funcionario/navbar-funciona
     RouterModule
   ],
   exports:[
-    NavbarClienteComponent
+    NavbarClienteComponent,
+    NavbarFuncionarioComponent
   ]
 })
 export class ComponentsModule { }
