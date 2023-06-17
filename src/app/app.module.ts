@@ -10,7 +10,7 @@ import { RegistrarModule } from './registrar/registrar.module';
 import { ClienteModule } from './cliente/cliente.module';
 import { ComponentsModule } from './components/components.module';
 import { FuncionarioModule } from './funcionario/funcionario.module';
-
+import {HttpClientModule} from '@angular/common/http'
 
 
 @NgModule({
@@ -26,7 +26,8 @@ import { FuncionarioModule } from './funcionario/funcionario.module';
     ClienteModule,
     ComponentsModule,
     FormsModule,
-    FuncionarioModule
+    FuncionarioModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -44,7 +44,10 @@ export class NovoPedidoComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.produtos = this.clienteService.listarProdutos();
+    this.clienteService.listarProdutos().subscribe((produtos: Produto[]) =>{
+      this.produtos = produtos
+    })
+    // this.produtos = this.clienteService.listarProdutos();
   }
 
   adicionarItem() {

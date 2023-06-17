@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
-
-import { LoginService } from './services/login.service';
+// import { LoginService } from './services/login.service';
+import { AuthService } from './services/auth.services';
 import { Router } from '@angular/router';
 
 @Injectable({
@@ -10,18 +10,18 @@ import { Router } from '@angular/router';
 })
 export class AuthGuard implements CanActivate {
 
-  constructor(private LoginService: LoginService, private router: Router){}
+  constructor(private LoginService: AuthService, private loginService: AuthService, private router: Router){}
 
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     
-    const usuarioLogado = this.LoginService.usuarioLogado;
+    const usuarioLogado = this.loginService.usuarioLogado;
 
     let url = state.url;
     if(usuarioLogado){
       if (route.data?.['role'] && route.data?.['role'].indexOf(usuarioLogado.perfil) === -1){
-        this.router.navigate(['/login'], {queryParams: {error: "Proiido o acesso a " + url}});
+        this.router.navigate(['/login'], {queryParams: {error: "Proibido o acesso a " + url}});
         return false;
       }
 

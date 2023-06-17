@@ -36,7 +36,7 @@ export class LoginService {
       user = new Usuario(1, "Pato-Funcionario", login.email, login.senha, "Funcionario");
 
     }
-
+    console.log(user);
     return of(user);
   }
 

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {  Router } from '@angular/router';
-import { LoginService } from 'src/app/auth/services/login.service';
+// import { LoginService } from 'src/app/auth/services/login.service';
+import { AuthService } from 'src/app/auth/services/auth.services';
 import { Usuario } from 'src/app/shared/models/usuario.model';
 
 @Component({
@@ -9,7 +10,7 @@ import { Usuario } from 'src/app/shared/models/usuario.model';
   styleUrls: ['./navbar-funcionario.component.css']
 })
 export class NavbarFuncionarioComponent {
-  constructor(private router: Router,private loginService: LoginService){
+  constructor(private router: Router,private loginService: AuthService){
   }
 
   get GetusuarioLogado():Usuario | null{

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { LoginService } from './auth/services/login.service';
+import { AuthService } from './auth/services/auth.services';
 import { Usuario } from './shared/models/usuario.model';
 
 @Component({
@@ -11,7 +11,7 @@ import { Usuario } from './shared/models/usuario.model';
 export class AppComponent {
   title = 'TrabalhoWeII';
 
-  constructor(private router:Router, private loginService:LoginService){}
+  constructor(private router:Router, private loginService:AuthService){}
 
   get usuarioLogado(): Usuario | null{
     return this.loginService.usuarioLogado;

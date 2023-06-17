@@ -1,10 +1,19 @@
 import { Injectable } from '@angular/core';
 import { Produto } from 'src/app/shared/models/produto.model';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ClienteService {
+
+  BASE_URL="http://localhost:8080/produtos";
+
+  httpOptions = {
+    headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+    })
+  }
 
   pedidos = [
     { id_pedido: "1", status_pedido: "Cancelado", dt_pedido: "11/04/2023", valor_pedido: "100,00", prazo_pedido: 10},
@@ -15,16 +24,8 @@ export class ClienteService {
     { id_pedido: "6", status_pedido: "Finalizado", dt_pedido: "30/02/2022", valor_pedido: "203,00", prazo_pedido: 10}
   ];
 
-  produtos = [
-    new Produto(1,"camiseta", 10.00, 1),
-    new Produto(2,"camisa", 20.00, 3),
-    new Produto(3,"calcas", 12.00, 2),
-    new Produto(4,"cueca", 15.00, 1),
-    new Produto(5,"meia", 9.00, 1)
-  ];  
 
-  constructor() { }
-
+  constructor(private httpClient: HttpClient) { }
 
   listarPedidosHome(){
     return this.pedidos.filter(pedido => pedido.status_pedido === 'Em aberto');
@@ -57,7 +58,8 @@ export class ClienteService {
   }
 
   listarProdutos(){
-    return this.produtos;
+    return this.httpClient.get<Produto[]>(this.BASE_URL, this.httpOptions);
+    // return this.produtos;
   }
 
 
