@@ -10,6 +10,7 @@ import { HomeFuncionarioComponent } from './funcionario/home-funcionario/home-fu
 import { ListaPedidosFuncionarioComponent } from './funcionario/lista-pedidos-funcionario/lista-pedidos-funcionario.component';
 import { ProdutoComponent } from './funcionario/produto/produto.component';
 import { FuncionariosComponent } from './funcionario/funcionarios/funcionarios.component';
+import { RelatorioComponent } from './funcionario/relatorio/relatorio.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -22,7 +23,7 @@ const routes: Routes = [
   {path: 'funcionario/pedidos',canActivate:[AuthGuard], data: {role: 'Funcionario'}, component: ListaPedidosFuncionarioComponent},
   {path: 'funcionario/produtos',canActivate:[AuthGuard], data: {role: 'Funcionario'}, component: ProdutoComponent},
   {path: 'funcionario/funcionarios',canActivate:[AuthGuard], data: {role: 'Funcionario'}, component: FuncionariosComponent},
-
+  {path: 'funcionario/relatorio',canActivate:[AuthGuard], data: {role: 'Funcionario'}, component: RelatorioComponent}
 ];
 
 @NgModule({

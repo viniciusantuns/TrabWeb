@@ -9,13 +9,15 @@ import { ProdutoComponent } from './produto/produto.component';
 import { HomeFuncionarioComponent } from './home-funcionario/home-funcionario.component';
 import { ListaPedidosFuncionarioComponent } from './lista-pedidos-funcionario/lista-pedidos-funcionario.component';
 import { FuncionariosComponent } from './funcionarios/funcionarios.component';
+import { RelatorioComponent } from './relatorio/relatorio.component';
 
 @NgModule({
   declarations: [
 HomeFuncionarioComponent,
 ListaPedidosFuncionarioComponent,
 ProdutoComponent,
-FuncionariosComponent
+FuncionariosComponent,
+RelatorioComponent
   ],
   imports: [
     CommonModule,
