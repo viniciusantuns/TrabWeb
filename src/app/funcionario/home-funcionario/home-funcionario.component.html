@@ -14,7 +14,12 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
+                    <tr *ngFor="let pedido of pedidos">
+                        <td> {{pedido.id}}</td>
+                        <td> {{pedido.data_pedido}} </td>
+                        <td> {{pedido.valorTotal}}</td>
+                        <td> {{pedido.prazo_final}}</td>
+                        <td></td>
                     </tr>
                 </tbody>
                 </table>

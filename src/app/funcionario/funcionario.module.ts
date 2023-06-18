@@ -10,6 +10,7 @@ import { HomeFuncionarioComponent } from './home-funcionario/home-funcionario.co
 import { ListaPedidosFuncionarioComponent } from './lista-pedidos-funcionario/lista-pedidos-funcionario.component';
 import { FuncionariosComponent } from './funcionarios/funcionarios.component';
 import { RelatorioComponent } from './relatorio/relatorio.component';
+import { FuncionarioService } from './service/funcionario.service';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,7 @@ RelatorioComponent
     FormsModule
   ],
   providers: [
-  
+    FuncionarioService
   ]
 })
 

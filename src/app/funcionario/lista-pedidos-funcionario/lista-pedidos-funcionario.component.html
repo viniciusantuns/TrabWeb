@@ -22,8 +22,13 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-              </tr>
+              <tr *ngFor="let pedido of pedidos">
+                <td> {{pedido.id}}</td>
+                <td> {{pedido.data_pedido}} </td>
+                <td> {{pedido.valorTotal}}</td>
+                <td> {{pedido.status}}</td>
+                <td></td>
+            </tr>
             </tbody>
           </table>
         </div>

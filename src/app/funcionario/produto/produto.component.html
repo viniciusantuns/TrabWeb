@@ -37,25 +37,38 @@
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            <div class="row">
-              <div class="col-md-6">
-                <label for="">nome</label>
-                  <input type="text" name="" id="nome">
+            <form #formProduto="ngForm">
+              <div class="row">
+                <div class="col-md-6">
+                  <label for="">nome</label>
+                    <input [(ngModel)]="produto.nome" #nome="ngModel" name="senha" type="text" class="form-control form-control-lg" required minlength="1" maxlength="20"/>
+                    <div *ngIf="nome.errors && (nome.dirty || nome.touched)" class="alert alert-danger">
+                      <div> Digite um nome</div>
+                    </div>
+                    <!-- <input type="text" name="" id="nome"> -->
+                </div>
+                <div class="col-md-6">
+                  <input [(ngModel)]="produto.valor" #preco="ngModel" name="preco" type="text"  class="form-control form-control-lg" required />
+                    <div *ngIf="preco.errors && (preco.dirty || preco.touched)" class="alert alert-danger">
+                      <div> Digite o preço</div>
+                    </div>
+                  <!-- <label for="">preco</label>
+                  <input type="text" name="" id="preco"> -->
+                </div>
+                <div class="col-md-6">
+                  <label for="">Prazo</label>
+                  <input [(ngModel)]="produto.prazo" #prazo="ngModel" name="prazo" type="number" class="form-control form-control-lg" required minlength="1" maxlength="7"/>
+                    <div *ngIf="prazo.errors && (prazo.dirty || prazo.touched)" class="alert alert-danger">
+                      <div> Digite um prazo</div>
+                    </div>
+                  <!-- <input type="text" name="" id="prazo"> -->
+                </div>
               </div>
-              <div class="col-md-6">
-                <label for="">preco</label>
-                <input type="text" name="" id="preco">
-              </div>
-              <div class="col-md-6">
-                <label for="">Prazo</label>
-                <input type="text" name="" id="prazo">
-              </div>
-            </div>
-             
+            </form>
           </div>
           <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-              <button type="button" id='nv_s' class="btn btn-success" data-bs-dismiss="modal">Salvar</button>
+              <button  type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+              <button (click)="salvarProduto()" [disabled]="!formProduto.form.valid" type="button" id='nv_s' class="btn btn-success" data-bs-dismiss="modal">Salvar</button>
           </div>
       </div>
   </div>
