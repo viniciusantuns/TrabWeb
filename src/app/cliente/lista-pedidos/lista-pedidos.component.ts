@@ -15,7 +15,6 @@ export class ListaPedidosComponent implements OnInit {
   public status: string = '';
 
   constructor(private clienteService: ClienteService){
-
   }
 
   ngOnInit(): void {

@@ -5,3 +5,33 @@
     width:30% ;
     margin-left: 50px;
 }
+
+.aberto {
+    background-color: rgba(246, 246, 76, 0.76);
+}
+
+.recolhido {
+    background-color: rgba(110, 109, 109, 0.623);
+}
+
+.aguardando{
+    background-color: rgba(0, 100, 128, 0.494);
+}
+
+.pago {
+    background-color: rgba(249, 174, 70, 0.819);
+}
+
+.finalizado {
+    background-color: rgba(142, 244, 105, 0.838);
+}
+
+.cancelado {
+    background-color: rgba(242, 101, 124, 0.824);
+    
+}
+
+
+.highlight {
+    background-color: yellow;
+}

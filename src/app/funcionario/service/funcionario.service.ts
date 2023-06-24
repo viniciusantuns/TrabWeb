@@ -35,17 +35,22 @@ export class FuncionarioService {
     return this.httpClient.delete(this.URL_PRODUTOS + `/${produto.id}`, this.httpOptions);
   }
 
-  listarPedidos(tipo: String | null = null, data_inicio?: Date, data_fim?: Date){
-    let url = this.BASE_URL ;
-    
-    if (data_inicio && data_fim){
-      url = url + ""
+  listarPedidos(tipo_data: string | null = null, data_inicio?: string | null, data_fim?: string | null){
+    let params = new HttpParams();
+    console.log(tipo_data)
+    console.log(data_inicio)
+    console.log(data_fim)
+    if (tipo_data) {
+      // console.log(tipo_data)
+      params = params.set('type_date', tipo_data);
     }
-    return this.httpClient.get<Pedido[]>(this.BASE_URL + (tipo != null? `?type=${tipo}` : ""), this.httpOptions);
-  }
+    
+    if (data_inicio && data_fim) {
+      params = params.set('data_ini', data_inicio);
+      params = params.set('data_fim', data_fim);
+    }
 
-  // listarPedidosHome(){
-  //   return this.httpClient.get<Pedido[]>(this.BASE_URL+ "?type='all'", this.httpOptions);
-  // }
+    return this.httpClient.get<Pedido[]>(this.BASE_URL, { params });
+  }
 
 }
