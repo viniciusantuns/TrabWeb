@@ -80,11 +80,12 @@ export class ProdutoComponent implements OnInit {
     const modalRef = this.modalService.open(ModalProdutoComponent);
     
     if(produto){
-      modalRef.componentInstance.produto = produto;
+      let prod = new Produto(produto.id, produto.nome, produto.prazo, produto.valor);
+      // modalRef.componentInstance.produto = {...produto};
+      modalRef.componentInstance.produto = prod;
       modalRef.componentInstance.acao = "editar";
 
       modalRef.componentInstance.salvarProdutoEvento.subscribe((produto: Produto) => {
-
         this.editarProduto(produto);
       });
 
