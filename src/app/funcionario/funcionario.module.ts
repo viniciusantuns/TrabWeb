@@ -11,6 +11,7 @@ import { ListaPedidosFuncionarioComponent } from './lista-pedidos-funcionario/li
 import { FuncionariosComponent } from './funcionarios/funcionarios.component';
 import { RelatorioComponent } from './relatorio/relatorio.component';
 import { FuncionarioService } from './service/funcionario.service';
+import { ModalProdutoComponent } from './modal-produto/modal-produto.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ HomeFuncionarioComponent,
 ListaPedidosFuncionarioComponent,
 ProdutoComponent,
 FuncionariosComponent,
-RelatorioComponent
+RelatorioComponent,
+ModalProdutoComponent
   ],
   imports: [
     CommonModule,

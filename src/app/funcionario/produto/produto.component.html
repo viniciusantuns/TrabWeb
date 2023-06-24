@@ -24,9 +24,11 @@
 
 
 <div>
-  <button class="btn btn-success" id="nv_produto" type="button">Cadastrar Produto</button>
+  <button  (click)="abrirModalProduto()" class="btn btn-success" id="nv_produto" type="button">Cadastrar Produto</button>
 </div>
-
+<div>
+  <!-- <button  (click)="abrirModalProduto({id: ""})" class="btn btn-success" id="nv_produto" type="button">Editar Produto</button> -->
+</div>
 
 <!-- Modal - Detalhes de Pedido -->
 <div class="modal fade" id="modal_prod" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

@@ -1,5 +1,5 @@
 {
-  "name": "trabalho-we-ii",
+  "name": "teste-modal",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -18,7 +18,9 @@
     "@angular/platform-browser": "^15.2.0",
     "@angular/platform-browser-dynamic": "^15.2.0",
     "@angular/router": "^15.2.0",
-    "bootstrap": "^5.2.3",
+    "@ng-bootstrap/ng-bootstrap": "^14.2.0",
+    "bootstrap": "^5.3.0",
+    "jquery": "^3.7.0",
     "jspdf": "^2.5.1",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
