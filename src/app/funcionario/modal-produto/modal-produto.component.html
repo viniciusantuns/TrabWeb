@@ -1,19 +1,43 @@
+
 <div class="modal-header">
     <button type="button" class="close" aria-label="Fechar" (click)="activeModal.dismiss()">
         <span aria-hidden="true">&times;</span>
     </button>
-    <h4 class="modal-title" id="modalLabel"> Pessoa </h4>
+    <h4 class="modal-title" id="modalLabel"> Produto </h4>
 </div>
+
 <div class="modal-body text-center">
     <div>
-        <!-- <p>Id: {{ pessoa.nome }} </p> -->
-        <p>Nome: {{ produto.nome }}</p>
-        <p>Preço {{ produto.valor}}</p>
-        <p>Prazo {{ produto.prazo}}</p>
+        <form #formProduto="ngForm">
+            <div class="row">
+                <div class="col-md-4">
+                    <label class="form-label" for="nome">Nome</label>
+                    <input type="text" [(ngModel)]="produto.nome" #nome="ngModel" name="nome" class="form-control form-control-lg" required/>
+                    <div *ngIf="nome.errors && (nome.dirty || nome.touched)" class="alert alert-danger">
+                        Digite um nome
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <label class="form-label" for="valor">Valor</label>
+                    <input type="text" [(ngModel)]="produto.valor" #valor="ngModel"  name="valor" class="form-control form-control-lg" required/>
+                    <div *ngIf="valor.errors && (valor.dirty || valor.touched)" class="alert alert-danger">
+                        Digite o preço
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <label  class="form-label" for="prazo">Prazo</label>
+                    <input type="number" [(ngModel)]="produto.prazo" #prazo="ngModel" name="prazo" class="form-control form-control-lg" required/>
+                        <div *ngIf="prazo.errors && (prazo.dirty || prazo.touched)" class="alert alert-danger">
+                            Digite o preço
+                        </div>
+                </div>
+            </div>
+        </form>
     </div>
 </div>
+
 <div class="modal-footer">
-    <button *ngIf="acao == 'novo'" type="button" class="btn btn-outline-dark" (click)="salvar()">Salvar</button>
-    <button *ngIf="acao == 'editar'" type="button" class="btn btn-outline-dark" (click)="editar()">Editar</button>
+    <button *ngIf="acao == 'novo'" type="button" class="btn btn-success" (click)="salvar()">Salvar</button>
+    <button *ngIf="acao == 'editar'" type="button" class="btn btn-primary" (click)="editar()">Editar</button>
     <button type="button" class="btn btn-outline-dark" (click)="activeModal.close()">Fechar</button>
 </div>
