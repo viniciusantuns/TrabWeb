@@ -1,12 +1,12 @@
 <body>
-    <section class="vh-100" style="background-color:#237c9ffb;">
+    <section class="vh-100%" style="background-color:#237c9ffb;">
         <div class="container py-5 h-100">
             <div class="row d-flex justify-content-center align-items-center h-100">
                 <div class="col col-xl-10">
                     <div class="card" style="border-radius: 1rem;">
                         <div class="row g-0">
                             <div class="col-md-6 col-lg-5 d-none d-md-block">
-                                <img src="Imagens\lavanderia.jpg" alt="login form" class="img-fluid"
+                                <img [src]="LavanderiaPath" alt="login form" class="img-fluid"
                                     style="border-radius: 1rem 0 0 1rem;" />
                             </div>
                             <div class="col-md-6 col-lg-7 d-flex align-items-center">
@@ -44,7 +44,7 @@
                                                         <label class="form-label" for="cep">CEP</label>
                                                         <input required name="cep" [(ngModel)]='Cep.cep' #cep_F (blur)="pesquisacep(Cep.cep)" (keyup)="msk_cep()" type="text" id="cep"
                                                             class="form-control form-control-lg" placeholder="XXXXX-XXX"
-                                                            minlength="8" />
+                                                            minlength="8" maxlength="9" />
                                                         
                                                         
                                                         <div *ngIf="Cep.cep">

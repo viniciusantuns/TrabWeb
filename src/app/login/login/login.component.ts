@@ -16,7 +16,8 @@ export class LoginComponent implements OnInit{
   login: Login = new Login();
   loading: boolean = false;
   message!:string;
-  
+ LavanderiaPath ='assets/lavanderia.jpg';
+ 
   constructor(private loginService:AuthService, private router:Router, private route: ActivatedRoute){
     if (this.loginService.usuarioLogado){
       // console.log("Existe")

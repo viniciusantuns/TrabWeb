@@ -5,17 +5,23 @@
       <tbody>
         <tr>
           <td>Relatório Receita</td>
-          <td class="x"><button (click)="relceita_pdf()"><img src="Imagens\impressora.png"> </button></td>
+          <td>Inicial  <input type="date"></td>
+          <td>FInal  <input type="date"></td>
+          <td class="x"><button (click)="relceita_pdf()"><img [src]="impressoraPath" width="40px"> </button></td>
 
         </tr>
         <tr>
           <td>Relatório de Clientes</td>
-          <td class="x"><button (click)="relcliente_pdf()"> <img src="Imagens\impressora.png"> </button></td>
+          <td></td>
+          <td></td>
+          <td class="x"><button (click)="relcliente_pdf()"> <img [src]="impressoraPath" width="40px"> </button></td>
         </tr>
         <tr>
         <tr>
           <td>Relatório de Clientes top</td>
-          <td class="x"><button (click)="reltopcliente_pdf()"> <img src="Imagens\impressora.png"> </button></td>
+          <td></td>
+          <td></td>
+          <td class="x"><button (click)="reltopcliente_pdf()"> <img [src]="impressoraPath"  width="40px"> </button></td>
         </tr>
       </tbody>
     </table>

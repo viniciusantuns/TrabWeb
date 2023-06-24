@@ -29,7 +29,7 @@ export class RegistrarComponent implements OnInit{
     localidade: "",
     uf: "",
   };
-
+  LavanderiaPath = 'assets/lavanderia.jpg';
   constructor(private route: Router, private registrarService: RegistrarService){}
 
   ngOnInit(): void {
@@ -104,7 +104,7 @@ export class RegistrarComponent implements OnInit{
 
   msk_cep():void{
     if(!this.Cep.cep) this.Cep.cep = "";
-    this.Cep.cep = this.Cep.cep.replace(/D/g,'');
+    this.Cep.cep = this.Cep.cep.replace(/[^0-9]/g, "");
     this.Cep.cep = this.Cep.cep.replace(/(\d{5})(\d)/, '$1-$2');
   }
   mask_cpf():void{

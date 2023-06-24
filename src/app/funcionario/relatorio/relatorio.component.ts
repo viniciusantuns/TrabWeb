@@ -6,7 +6,8 @@ import { jsPDF } from 'jspdf';
   styleUrls: ['./relatorio.component.css']
 })
 export class RelatorioComponent implements OnInit {
-
+ impressoraPath= 'assets/impressora.png';
+  
   ngOnInit(): void { }
 
    relceita_pdf() {
