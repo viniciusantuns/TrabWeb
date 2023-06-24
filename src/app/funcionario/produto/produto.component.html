@@ -1,6 +1,9 @@
 <app-navbar-funcionario></app-navbar-funcionario>
 <main>
     <div class="container">
+      <div class="my-2">
+        <button (click)="abrirModalProduto()" class="btn btn-success" id="nv_produto" type="button">Cadastrar Produto</button>
+      </div>
       <div class="table-wrap">
         <table nome="tabelapr" class="table" id="tabelapr">
           <thead>
@@ -14,12 +17,21 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
+            <tr *ngFor="let produto of produtos">
+              <td> {{produto.id}}</td>
+              <td> {{produto.nome}} </td>
+              <td> {{produto.valor}}</td>
+              <td> {{produto.prazo}}</td>
+              <td> 
+                <button (click)="abrirModalProduto(produto)" class="btn btn-success" id="nv_produto" type="button">Editar</button> 
+                <button (click)="removerProduto(produto)" class="btn btn-danger ms-2"type="button">Remover</button> 
+              </td>
             </tr>
           </tbody>
         </table>
       </div>
     </div>
+<<<<<<< HEAD
 
 
 
@@ -77,3 +89,8 @@
   </div>
 </div>
 </main>
+=======
+</main>
+
+
+>>>>>>> 0c7700b61e39d95d277127618be7de1550c17c9a

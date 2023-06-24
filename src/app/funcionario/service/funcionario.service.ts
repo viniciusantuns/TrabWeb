@@ -9,6 +9,7 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 export class FuncionarioService {
 
   BASE_URL="http://localhost:8080/pedidos";
+  URL_PRODUTOS= "http://localhost:8080/produtos"
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -18,13 +19,21 @@ export class FuncionarioService {
   constructor(private httpClient: HttpClient) { }
 
   listarProdutos(){
-    return this.httpClient.get<Produto[]>(this.BASE_URL, this.httpOptions);
+    return this.httpClient.get<Produto[]>(this.URL_PRODUTOS, this.httpOptions);
   }
 
   inserirNovoProduto(produto :Produto){
-    this.httpClient.post<Produto>(this.BASE_URL, produto, this.httpOptions);
+    return this.httpClient.post<Produto>(this.URL_PRODUTOS, produto, this.httpOptions);
   }
 
+  editarProduto(produto: Produto){
+    return this.httpClient.put(this.URL_PRODUTOS + `/${produto.id}`, produto , this.httpOptions);
+  }
+
+  removerProduto(produto: Produto){
+    console.log(this.URL_PRODUTOS + `/${produto.id}`)
+    return this.httpClient.delete(this.URL_PRODUTOS + `/${produto.id}`, this.httpOptions);
+  }
 
   listarPedidos(tipo: String | null = null){
     return this.httpClient.get<Pedido[]>(this.BASE_URL + (tipo != null? `?type=${tipo}` : ""), this.httpOptions);
@@ -33,5 +42,7 @@ export class FuncionarioService {
   listarPedidosHome(){
     return this.httpClient.get<Pedido[]>(this.BASE_URL+ "?type='all'", this.httpOptions);
   }
+
+  
 
 }

@@ -26,28 +26,77 @@ export class ProdutoComponent implements OnInit {
       this.produto = new Produto();
       
       this.funcionarioService.listarProdutos().subscribe((produtos: Produto[]) =>{
-        this.produtos = produtos
-      })
+        
+        produtos.forEach(produto => {
+          // console.log(produto)
+          let ped = new Produto(produto.id, produto.nome, produto.valor, produto.prazo);
+          // console.log(ped);
+          this.produtos.push(ped)
+        });
+      });
   }
 
 
-  salvarProduto():void{
-    if(this.formProduto.form.valid){
-      this.funcionarioService.inserirNovoProduto(this.produto);
+  listarProdutos(){
+    this.produtos = [];
+    this.funcionarioService.listarProdutos().subscribe((produtos: Produto[]) =>{
+      produtos.forEach(produto => {
+        let ped = new Produto(produto.id, produto.nome, produto.valor, produto.prazo);
+        this.produtos.push(ped)
+
+      });
+    });
+  }
+
+  removerProduto(produto: Produto){
+    let id = produto.id;
+    if(confirm("Deseja realmente remover esse produto?")){
+      this.funcionarioService.removerProduto(produto).subscribe(retorno =>{
+        alert("Produto removido com sucesso");
+        this.listarProdutos();
+
+      });
     }
-
   }
 
+  salvarProduto(produto: Produto){
+    this.funcionarioService.inserirNovoProduto(produto).subscribe(retorno => {
+        alert("Produto inserido com sucesso");
+        this.listarProdutos();
+      }
+    );
+  }
+
+
+  editarProduto(produto: Produto){
+    this.funcionarioService.editarProduto(produto).subscribe(retorno => {
+      alert("Produto editado com sucesso");
+      this.listarProdutos();
+    }
+  );
+  }
 
   abrirModalProduto(produto?:Produto) {
     const modalRef = this.modalService.open(ModalProdutoComponent);
     
     if(produto){
-      modalRef.componentInstance.produto = produto;
+      let prod = new Produto(produto.id, produto.nome, produto.prazo, produto.valor);
+      // modalRef.componentInstance.produto = {...produto};
+      modalRef.componentInstance.produto = prod;
       modalRef.componentInstance.acao = "editar";
+
+      modalRef.componentInstance.salvarProdutoEvento.subscribe((produto: Produto) => {
+        this.editarProduto(produto);
+      });
+
     }else{
       modalRef.componentInstance.produto = new Produto();
       modalRef.componentInstance.acao = "novo";
+
+      modalRef.componentInstance.salvarProdutoEvento.subscribe((produto: Produto) => {
+
+        this.salvarProduto(produto);
+      });
     }
 
   }
