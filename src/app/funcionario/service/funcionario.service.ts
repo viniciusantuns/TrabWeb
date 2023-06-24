@@ -35,14 +35,17 @@ export class FuncionarioService {
     return this.httpClient.delete(this.URL_PRODUTOS + `/${produto.id}`, this.httpOptions);
   }
 
-  listarPedidos(tipo: String | null = null){
+  listarPedidos(tipo: String | null = null, data_inicio?: Date, data_fim?: Date){
+    let url = this.BASE_URL ;
+    
+    if (data_inicio && data_fim){
+      url = url + ""
+    }
     return this.httpClient.get<Pedido[]>(this.BASE_URL + (tipo != null? `?type=${tipo}` : ""), this.httpOptions);
   }
 
-  listarPedidosHome(){
-    return this.httpClient.get<Pedido[]>(this.BASE_URL+ "?type='all'", this.httpOptions);
-  }
-
-  
+  // listarPedidosHome(){
+  //   return this.httpClient.get<Pedido[]>(this.BASE_URL+ "?type='all'", this.httpOptions);
+  // }
 
 }

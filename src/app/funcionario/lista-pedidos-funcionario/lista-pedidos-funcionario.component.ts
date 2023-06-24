@@ -23,6 +23,16 @@ export class ListaPedidosFuncionarioComponent implements OnInit{
   }
 
 
-  
+
+  listarPedidos(status: String,  data_inicio = null, data_fim = null){
+
+    this.funcionarioService.listarPedidos
+
+
+
+  }
+
+
+
 
 }
