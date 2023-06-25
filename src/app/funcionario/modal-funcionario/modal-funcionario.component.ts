@@ -5,11 +5,11 @@ import { FuncionarioService } from '../service/funcionario.service';
 import { NgForm } from '@angular/forms';
 
 @Component({
-  selector: 'app-modal-crud',
-  templateUrl: './modal-crud.component.html',
-  styleUrls: ['./modal-crud.component.css']
+  selector: 'app-modal-funcionario',
+  templateUrl: './modal-funcionario.component.html',
+  styleUrls: ['./modal-funcionario.component.css']
 })
-export class ModalCrudComponent {
+export class ModalFuncionarioComponent {
 
   @Input() funcionario!: Usuario;
   @Input() acao!: string;

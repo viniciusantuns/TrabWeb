@@ -12,7 +12,6 @@ import { ProdutoComponent } from './funcionario/produto/produto.component';
 import { FuncionariosComponent } from './funcionario/funcionarios/funcionarios.component';
 import { RelatorioComponent } from './funcionario/relatorio/relatorio.component';
 import { ConsultaPedidosComponent } from './cliente/consulta-pedidos/consulta-pedidos.component';
-import { CrudFuncionarioComponent } from './funcionario/crud-funcionario/crud-funcionario.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -26,7 +25,6 @@ const routes: Routes = [
   {path: 'funcionario/pedidos',canActivate:[AuthGuard], data: {role: 'Funcionario'}, component: ListaPedidosFuncionarioComponent},
   {path: 'funcionario/produtos',canActivate:[AuthGuard], data: {role: 'Funcionario'}, component: ProdutoComponent},
   {path: 'funcionario/funcionarios',canActivate:[AuthGuard], data: {role: 'Funcionario'}, component: FuncionariosComponent},
-  {path: 'funcionario/crud-funcionario',canActivate:[AuthGuard], data: {role: 'Funcionario'}, component: CrudFuncionarioComponent},
   {path: 'funcionario/relatorio',canActivate:[AuthGuard], data: {role: 'Funcionario'}, component: RelatorioComponent}
 ];
 
