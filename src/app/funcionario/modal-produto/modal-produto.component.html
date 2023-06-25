@@ -28,7 +28,7 @@
                     <label  class="form-label" for="prazo">Prazo</label>
                     <input type="number" [(ngModel)]="produto.prazo" #prazo="ngModel" name="prazo" class="form-control form-control-lg" required/>
                         <div *ngIf="prazo.errors && (prazo.dirty || prazo.touched)" class="alert alert-danger">
-                            Digite o preço
+                            Digite o prazo
                         </div>
                 </div>
             </div>
