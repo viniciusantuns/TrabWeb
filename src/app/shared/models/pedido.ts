@@ -27,11 +27,11 @@ export class ItemPedido extends Produto {
     constructor(
         id?: number,
         nome?: string,
-        valor?: number,
+        valor_unitario?: number,
         prazo?: number,
         public quantidade?: number
     ) {
-        super(id, nome, valor, prazo);
+        super(id, nome, valor_unitario, prazo);
     }
 }
 

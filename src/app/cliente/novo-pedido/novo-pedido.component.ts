@@ -50,7 +50,7 @@ export class NovoPedidoComponent implements OnInit {
         
       }else{
 
-        let itemOrcamento = new ItemPedido(prod?.id, prod?.nome, prod?.valor, prod?.prazo, this.quantidade);
+        let itemOrcamento = new ItemPedido(prod?.id, prod?.nome, prod?.valor_unitario, prod?.prazo, this.quantidade);
         this.orcamento.lista.push(itemOrcamento);
 
       }

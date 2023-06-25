@@ -46,7 +46,7 @@
                 <tr *ngFor="let item of orcamento.lista">
                     <td> {{item.nome}}</td>
                     <td> {{item.quantidade}} </td>
-                    <td> {{item.valor}}</td>
+                    <td> {{item.valor_unitario}}</td>
                     <td> {{item.prazo}} Dias</td>
                     <td><button class='btn btn-danger' (click)='removeItem(item.id)'>Excluir</button></td>
                 </tr>

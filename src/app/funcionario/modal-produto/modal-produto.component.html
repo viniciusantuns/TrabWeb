@@ -19,7 +19,7 @@
                 </div>
                 <div class="col-md-4">
                     <label class="form-label" for="valor">Valor</label>
-                    <input type="text" [(ngModel)]="produto.valor" #valor="ngModel"  name="valor" class="form-control form-control-lg" required/>
+                    <input type="text" [(ngModel)]="produto.valor_unitario" #valor="ngModel"  name="valor" class="form-control form-control-lg" required/>
                     <div *ngIf="valor.errors && (valor.dirty || valor.touched)" class="alert alert-danger">
                         Digite o preço
                     </div>

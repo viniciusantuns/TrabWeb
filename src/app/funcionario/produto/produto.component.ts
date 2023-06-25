@@ -29,7 +29,7 @@ export class ProdutoComponent implements OnInit {
         
         produtos.forEach(produto => {
           // console.log(produto)
-          let ped = new Produto(produto.id, produto.nome, produto.valor, produto.prazo);
+          let ped = new Produto(produto.id, produto.nome, produto.valor_unitario, produto.prazo);
           // console.log(ped);
           this.produtos.push(ped)
         });
@@ -41,7 +41,8 @@ export class ProdutoComponent implements OnInit {
     this.produtos = [];
     this.funcionarioService.listarProdutos().subscribe((produtos: Produto[]) =>{
       produtos.forEach(produto => {
-        let ped = new Produto(produto.id, produto.nome, produto.valor, produto.prazo);
+        console.log(produto)
+        let ped = new Produto(produto.id, produto.nome, produto.valor_unitario, produto.prazo);
         this.produtos.push(ped)
 
       });
@@ -51,10 +52,8 @@ export class ProdutoComponent implements OnInit {
   removerProduto(produto: Produto){
     let id = produto.id;
     if(confirm("Deseja realmente remover esse produto?")){
-      this.funcionarioService.removerProduto(produto).subscribe(retorno =>{
-        alert("Produto removido com sucesso");
+      this.funcionarioService.removerProduto(produto).subscribe((retorno:any) =>{
         this.listarProdutos();
-
       });
     }
   }
@@ -69,10 +68,11 @@ export class ProdutoComponent implements OnInit {
 
 
   editarProduto(produto: Produto){
-    this.funcionarioService.editarProduto(produto).subscribe(retorno => {
+    this.funcionarioService.editarProduto(produto).subscribe({
+      next: (retorno:any) => {
       alert("Produto editado com sucesso");
       this.listarProdutos();
-    }
+    }}
   );
   }
 
@@ -80,7 +80,7 @@ export class ProdutoComponent implements OnInit {
     const modalRef = this.modalService.open(ModalProdutoComponent);
     
     if(produto){
-      let prod = new Produto(produto.id, produto.nome, produto.prazo, produto.valor);
+      let prod = new Produto(produto.id, produto.nome, produto.prazo, produto.valor_unitario);
       // modalRef.componentInstance.produto = {...produto};
       modalRef.componentInstance.produto = prod;
       modalRef.componentInstance.acao = "editar";
