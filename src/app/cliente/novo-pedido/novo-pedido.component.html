@@ -18,7 +18,6 @@
                                 <input  [(ngModel)]="quantidade" required id="qtd_pecas" class="form-control" name="quantidade" type="number" min="1">
                             </div>
                             <div id="btn_add" class="col-md-3">
-                                <label> . </label>
                                 <button [disabled]="produto == undefined" (click)="adicionarItem()" id="btn-item" class="btn btn-primary">Adicionar</button>
                             </div>
                         </div>
@@ -39,7 +38,7 @@
                     <th>Quantidade</th>
                     <th>Valor Unitário</th>
                     <th>Prazo</th>
-                    <th><button class="btn btn-secondary" id="nv_orcamento" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" >Solicitar Orçamento</button> </th>
+                    <th><button (click)="abrirModalProduto()" class="btn btn-secondary" id="nv_orcamento" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" >Solicitar Orçamento</button> </th>
                 </tr>
             </thead>
             <tbody>

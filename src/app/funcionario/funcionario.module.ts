@@ -15,12 +15,12 @@ import { ModalProdutoComponent } from './modal-produto/modal-produto.component';
 
 @NgModule({
   declarations: [
-HomeFuncionarioComponent,
-ListaPedidosFuncionarioComponent,
-ProdutoComponent,
-FuncionariosComponent,
-RelatorioComponent,
-ModalProdutoComponent
+    HomeFuncionarioComponent,
+    ListaPedidosFuncionarioComponent,
+    ProdutoComponent,
+    FuncionariosComponent,
+    RelatorioComponent,
+    ModalProdutoComponent
   ],
   imports: [
     CommonModule,

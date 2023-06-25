@@ -2,14 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { ClienteService } from '../services/cliente.service';
 import { Produto } from 'src/app/shared/models/produto.model';
 import { Pedido, ItemPedido } from 'src/app/shared/models/pedido';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ModalAprovacaoComponent } from '../modal-aprovacao/modal-aprovacao.component';
 
 @Component({
   selector: 'app-novo-pedido',
   templateUrl: './novo-pedido.component.html',
   styleUrls: ['./novo-pedido.component.css']
 })
-
-
 export class NovoPedidoComponent implements OnInit {
 
   produtos:Produto[] = [];
@@ -19,7 +19,7 @@ export class NovoPedidoComponent implements OnInit {
 
   produto!: string;
 
-  constructor(private clienteService: ClienteService){
+  constructor(private clienteService: ClienteService, private modalService: NgbModal){
 
   }
 
@@ -27,14 +27,16 @@ export class NovoPedidoComponent implements OnInit {
     this.clienteService.listarProdutos().subscribe((produtos: Produto[]) =>{
       this.produtos = produtos
     })
-    // this.produtos = this.clienteService.listarProdutos();
+    
   }
 
   adicionarItem() {
 
     let prod: Produto | undefined = this.produtos.find(p => p.id === parseInt(this.produto));
+    console.log(this.produto)
+    console.log(prod)
   
-    if (typeof(prod) !== undefined) {
+    if (typeof(prod) != undefined) {
       
       if (this.orcamento.lista.find(p =>p.id === prod?.id)) { //se tem o produto na lista
           let item = this.orcamento.lista.find(p => p.id === prod?.id);
@@ -49,10 +51,10 @@ export class NovoPedidoComponent implements OnInit {
           }
         
       }else{
-
-        let itemOrcamento = new ItemPedido(prod?.id, prod?.nome, prod?.valor_unitario, prod?.prazo, this.quantidade);
-        this.orcamento.lista.push(itemOrcamento);
-
+        if(prod && prod.id && prod.nome && prod.valor_unitario && prod.prazo){
+          let itemOrcamento = new ItemPedido(prod?.id, prod?.nome, prod?.valor_unitario, prod?.prazo, this.quantidade );
+          this.orcamento.lista.push(itemOrcamento);
+        }
       }
       
     }
@@ -66,9 +68,23 @@ export class NovoPedidoComponent implements OnInit {
         this.orcamento.lista = this.orcamento.lista.filter(i => i.id != item?.id)
       }
     }
-    
-
   }
 
+  salvarPedido(pedido:Pedido){
+    this.clienteService.salvarPedido(pedido).subscribe(retorno => {alert(retorno)});
+  }
+
+
+  abrirModalProduto() {
+    const modalOrcamento = this.modalService.open(ModalAprovacaoComponent);
+    this.orcamento.calcularValores();
+    console.log(this.orcamento)
+    modalOrcamento.componentInstance.pedido = this.orcamento;
+
+    modalOrcamento.componentInstance.salvarPedido.subscribe((pedido: Pedido) => {
+      this.salvarPedido(pedido);
+    });
+
+  }
 
 }

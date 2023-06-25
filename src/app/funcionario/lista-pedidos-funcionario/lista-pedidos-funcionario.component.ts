@@ -20,7 +20,7 @@ export class ListaPedidosFuncionarioComponent implements OnInit{
 
 
   ngOnInit(): void {
-    this.funcionarioService.listarPedidos().subscribe(pedidos =>{
+    this.funcionarioService.listarPedidos("todos").subscribe(pedidos =>{
       pedidos.forEach(pedido => {
         let ped = new Pedido([],pedido.id, pedido.valorTotal, pedido.status, pedido.data_pedido, pedido.prazo_final);
         this.pedidos.push(ped);
@@ -41,7 +41,7 @@ export class ListaPedidosFuncionarioComponent implements OnInit{
 
     } else if (this.type === 'data' && this.dataInicio && this.dataFim) {
       this.pedidos = [];
-      this.funcionarioService.listarPedidos(this.type,this.dataInicio, this.dataFim).subscribe(pedidos =>{
+      this.funcionarioService.listarPedidos(this.type, null, this.dataInicio, this.dataFim).subscribe(pedidos =>{
         pedidos.forEach(pedido => {
           let ped = new Pedido([],pedido.id, pedido.valorTotal, pedido.status, pedido.data_pedido, pedido.prazo_final);
           this.pedidos.push(ped);
@@ -50,6 +50,7 @@ export class ListaPedidosFuncionarioComponent implements OnInit{
 
     }else{
       console.log("Selecione uma data");
+      
     }
 
   }

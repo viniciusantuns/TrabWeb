@@ -1,0 +1,14 @@
+<div class="modal-body text-center">
+    <div>
+        <div>Total Pedido <span>{{pedido.valorTotal}}</span></div>
+    </div>
+    <div>
+        <div>Prazo Pedido: <span>{{pedido.prazo_final}}</span></div>
+    </div>
+</div>
+
+<div class="modal-footer">
+    <button type="button" class="btn btn-success" (click)="aprovar()">Salvar</button>
+    <button type="button" class="btn btn-primary" (click)="rejeitar()">Rejietar</button>
+    <button type="button" class="btn btn-outline-dark" (click)="activeModal.close()">Fechar</button>
+</div>

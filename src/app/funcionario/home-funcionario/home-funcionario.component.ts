@@ -18,13 +18,14 @@ export class HomeFuncionarioComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.funcionarioService.listarPedidos("Em Aberto").subscribe(pedidos =>{
+      this.funcionarioService.listarPedidos("status","Em Aberto", null, null).subscribe(pedidos =>{
       // console.log(pedidos);
 
       pedidos.forEach(pedido => {
         // console.log(pedido);
         let ped = new Pedido([],pedido.id, pedido.valorTotal, pedido.status, pedido.data_pedido, pedido.prazo_final);
         this.pedidos.push(ped);
+
       });
 
       

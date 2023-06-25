@@ -7,12 +7,15 @@ import { RouterModule } from '@angular/router';
 import { ListaPedidosComponent } from './lista-pedidos/lista-pedidos.component';
 import { FormsModule } from '@angular/forms';
 import { NovoPedidoComponent } from './novo-pedido/novo-pedido.component';
+import { ModalAprovacaoComponent } from './modal-aprovacao/modal-aprovacao.component';
+
 
 @NgModule({
   declarations: [
     HomeClienteComponent,
     ListaPedidosComponent,
-    NovoPedidoComponent
+    NovoPedidoComponent,
+    ModalAprovacaoComponent
   ],
   imports: [
     CommonModule,

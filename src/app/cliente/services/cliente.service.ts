@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Produto } from 'src/app/shared/models/produto.model';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Pedido } from 'src/app/shared/models/pedido';
 
 @Injectable({
   providedIn: 'root'
@@ -8,6 +9,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 export class ClienteService {
 
   BASE_URL="http://localhost:8080/produtos";
+
+  URL_PEDIDOS = "ttp://localhost:8080/pedidos"
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -60,6 +63,11 @@ export class ClienteService {
   listarProdutos(){
     return this.httpClient.get<Produto[]>(this.BASE_URL, this.httpOptions);
     // return this.produtos;
+  }
+
+
+  salvarPedido(pedido: Pedido){
+    return this.httpClient.post(this.URL_PEDIDOS, pedido, this.httpOptions );
   }
 
 
