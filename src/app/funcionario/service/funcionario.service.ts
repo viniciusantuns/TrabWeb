@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Produto } from 'src/app/shared/models/produto.model';
 import { Pedido, ItemPedido } from 'src/app/shared/models/pedido';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { Usuario } from 'src/app/shared/models/usuario.model';
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +11,7 @@ export class FuncionarioService {
 
   BASE_URL="http://localhost:8080/pedidos";
   URL_PRODUTOS= "http://localhost:8080/produtos"
+  URL_FUNCIONARIOS ="http://localhost:8080/funcionarios"
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -38,10 +40,6 @@ export class FuncionarioService {
 
   listarPedidos(tipo_data: string | null = null, status?:string |null , data_inicio?: string | null, data_fim?: string | null){
     let params = new HttpParams();
-    console.log(tipo_data)
-    console.log(status)
-    console.log(data_inicio)
-    console.log(data_fim)
     if (tipo_data) {
       params = params.set('type', tipo_data);
     }
@@ -53,8 +51,23 @@ export class FuncionarioService {
       params = params.set('inicio', data_inicio);
       params = params.set('fim', data_fim);
     }
-    console.log()
     return this.httpClient.get<Pedido[]>(this.BASE_URL, { params });
+  }
+
+  listarFuncionarios(){
+    return this.httpClient.get<Usuario[]>(this.URL_FUNCIONARIOS, this.httpOptions);
+  }
+
+  inserirFuncionario(funcionario :Usuario){
+    return this.httpClient.post<Usuario>(this.URL_FUNCIONARIOS, funcionario, this.httpOptions);
+  }
+
+  editarFuncionario(funcionario: Usuario){
+    return this.httpClient.put(this.URL_FUNCIONARIOS + `/${funcionario.id}`, funcionario , this.httpOptions);
+  }
+
+  removerFuncionario(funcionario: Usuario){
+    return this.httpClient.delete(this.URL_FUNCIONARIOS + `/${funcionario.id}`, this.httpOptions);
   }
 
 }

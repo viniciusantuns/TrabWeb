@@ -1,0 +1,31 @@
+<app-navbar-cliente></app-navbar-cliente>
+<main>
+    <div class="cabecalho">
+        <input placeholder="Informe o Pedido"> 
+        <button class="btn btn-primary">Buscar</button>
+    </div>
+    <div class="container">
+        <div class="table-wrap">
+            <table class="table justify-content-center pedidos">
+                <thead>
+                    <th>Pedido</th>
+                    <th>Data Pedido</th>
+                    <th>Valor Total</th>
+                    <th>Prazo</th>
+                    <th>Status</th>
+                    <th></th>
+                </thead>
+               <tbody>
+                    <tr *ngFor="let pedido of pedido">
+                        <td>{{pedido.id}}</td>
+                        <td>{{pedido.data_pedido}}</td>
+                        <td>{{pedido.valorTotal}}</td>
+                        <td>{{pedido.prazo_final}}</td>
+                        <td>{{pedido.status}}</td>
+                    </tr>
+               </tbody>
+            </table>
+        </div>
+    </div>
+</main>
+

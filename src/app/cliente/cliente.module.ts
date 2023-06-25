@@ -8,6 +8,7 @@ import { ListaPedidosComponent } from './lista-pedidos/lista-pedidos.component';
 import { FormsModule } from '@angular/forms';
 import { NovoPedidoComponent } from './novo-pedido/novo-pedido.component';
 import { ModalAprovacaoComponent } from './modal-aprovacao/modal-aprovacao.component';
+import { ConsultaPedidosComponent } from './consulta-pedidos/consulta-pedidos.component';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { ModalAprovacaoComponent } from './modal-aprovacao/modal-aprovacao.compo
     HomeClienteComponent,
     ListaPedidosComponent,
     NovoPedidoComponent,
-    ModalAprovacaoComponent
+    ModalAprovacaoComponent,
+    ConsultaPedidosComponent
   ],
   imports: [
     CommonModule,

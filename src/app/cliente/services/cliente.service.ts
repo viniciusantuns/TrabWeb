@@ -3,6 +3,7 @@ import { Produto } from 'src/app/shared/models/produto.model';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Pedido } from 'src/app/shared/models/pedido';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -70,5 +71,14 @@ export class ClienteService {
     return this.httpClient.post(this.URL_PEDIDOS, pedido, this.httpOptions );
   }
 
-
+  listarPedido(id_pedido: number | null = null){
+    let url = this.BASE_URL ;
+    if (id_pedido){
+      url = url + ""
+    }
+    return this.httpClient.get<Pedido[]>(this.BASE_URL + (id_pedido != null? `?type=${id_pedido}` : ""), this.httpOptions);
+  }
+  recolherPedido(pedido:Pedido){
+      return this.httpClient.post(this.URL_PEDIDOS, pedido, this.httpOptions ); 
+    }
 }

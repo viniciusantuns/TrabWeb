@@ -12,6 +12,8 @@ import { FuncionariosComponent } from './funcionarios/funcionarios.component';
 import { RelatorioComponent } from './relatorio/relatorio.component';
 import { FuncionarioService } from './service/funcionario.service';
 import { ModalProdutoComponent } from './modal-produto/modal-produto.component';
+import { CrudFuncionarioComponent } from './crud-funcionario/crud-funcionario.component';
+import { ModalCrudComponent } from './modal-crud/modal-crud.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { ModalProdutoComponent } from './modal-produto/modal-produto.component';
     ProdutoComponent,
     FuncionariosComponent,
     RelatorioComponent,
-    ModalProdutoComponent
+    ModalProdutoComponent,
+    CrudFuncionarioComponent,
+    ModalCrudComponent
   ],
   imports: [
     CommonModule,
