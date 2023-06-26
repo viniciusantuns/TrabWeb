@@ -33,7 +33,6 @@ export class FuncionarioService {
   }
 
   removerProduto(produto: Produto){
-    console.log(this.URL_PRODUTOS + `/${produto.id}`)
     return this.httpClient.delete(this.URL_PRODUTOS + `/${produto.id}`, this.httpOptions);
   }
 

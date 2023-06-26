@@ -82,7 +82,6 @@ export class RegistrarComponent implements OnInit{
       }else{
         alert("Cep não encontrado");
       }
-      console.log(this.Cep)
     }else{
       return
     }

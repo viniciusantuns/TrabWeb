@@ -28,7 +28,6 @@ export class FuncionariosComponent {
       }
       funcionarios1.forEach(funcionario => {
         let fun = new Usuario(funcionario.id, funcionario.nome, funcionario.email, funcionario.senha, funcionario.data_nascimento);
-        console.log(fun);
         this.funcionarios.push(fun);
       });
     });
@@ -75,8 +74,7 @@ export class FuncionariosComponent {
       if(funcionario){
           let func = new Usuario(funcionario.id, funcionario.nome, funcionario.email, funcionario.senha, funcionario.data_nascimento);
           modalRef.componentInstance.funcionario = func;
-          console.log("b");
-          console.log(modalRef.componentInstance.funcionario);
+
           modalRef.componentInstance.acao = "editar";
           
           modalRef.componentInstance.salvarFuncionarioEvento.subscribe((funcionario: Usuario) => {

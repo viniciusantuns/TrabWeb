@@ -28,9 +28,7 @@ export class ProdutoComponent implements OnInit {
       this.funcionarioService.listarProdutos().subscribe((produtos: Produto[]) =>{
         
         produtos.forEach(produto => {
-          // console.log(produto)
           let ped = new Produto(produto.id, produto.nome, produto.valor_unitario, produto.prazo);
-          // console.log(ped);
           this.produtos.push(ped)
         });
       });
@@ -41,7 +39,6 @@ export class ProdutoComponent implements OnInit {
     this.produtos = [];
     this.funcionarioService.listarProdutos().subscribe((produtos: Produto[]) =>{
       produtos.forEach(produto => {
-        console.log(produto)
         let ped = new Produto(produto.id, produto.nome, produto.valor_unitario, produto.prazo);
         this.produtos.push(ped)
 

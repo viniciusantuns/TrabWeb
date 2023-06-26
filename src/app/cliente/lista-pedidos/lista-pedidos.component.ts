@@ -19,7 +19,6 @@ export class ListaPedidosComponent implements OnInit {
 
   ngOnInit(): void {
     this.pedidos = this.clienteService.listarPedidos();
-    console.log(this.pedidos);
   }
 
   listaPedidosFiltro(status: string){

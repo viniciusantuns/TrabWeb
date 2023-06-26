@@ -18,7 +18,6 @@ export class HomeClienteComponent  implements OnInit{
 
   ngOnInit(): void {
     this.pedidos = this.clienteService.listarPedidosHome();
-    console.log(this.pedidos);
   }
 
 }

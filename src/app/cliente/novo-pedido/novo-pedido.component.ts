@@ -33,8 +33,6 @@ export class NovoPedidoComponent implements OnInit {
   adicionarItem() {
 
     let prod: Produto | undefined = this.produtos.find(p => p.id === parseInt(this.produto));
-    console.log(this.produto)
-    console.log(prod)
   
     if (typeof(prod) != undefined) {
       
@@ -78,7 +76,7 @@ export class NovoPedidoComponent implements OnInit {
   abrirModalProduto() {
     const modalOrcamento = this.modalService.open(ModalAprovacaoComponent);
     this.orcamento.calcularValores();
-    console.log(this.orcamento)
+
     modalOrcamento.componentInstance.pedido = this.orcamento;
 
     modalOrcamento.componentInstance.salvarPedido.subscribe((pedido: Pedido) => {

@@ -49,7 +49,6 @@ export class ListaPedidosFuncionarioComponent implements OnInit{
       });
 
     }else{
-      console.log("Selecione uma data");
       
     }
 
@@ -57,8 +56,6 @@ export class ListaPedidosFuncionarioComponent implements OnInit{
 
   verificarCamposData() {
     if (this.dataInicio && this.dataFim) {
-      console.log(this.dataInicio)
-      console.log(this.dataFim)
       this.listarPedidos();
     }
   }
@@ -71,7 +68,6 @@ export class ListaPedidosFuncionarioComponent implements OnInit{
 
 
   getStatusClass(status:any): string {
-    console.log(status)
     if (status === 'Em Aberto') {
       return 'aberto';
 

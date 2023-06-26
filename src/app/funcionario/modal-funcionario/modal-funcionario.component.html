@@ -25,14 +25,14 @@
                 </div>
                 <div class="col-md-6">
                     <label  class="form-label" for="nascimento">Data Nascimento</label>
-                    <input type="text" [(ngModel)]="funcionario.perfil" #nascimento="ngModel" name="nascimento" class="form-control form-control-lg" required/>
+                    <input type="date" [(ngModel)]="funcionario.perfil" #nascimento="ngModel" name="nascimento" class="form-control form-control-lg" required/>
                         <div *ngIf="nascimento.errors && (nascimento.dirty || nascimento.touched)" class="alert alert-danger">
                             Digite a Data de Nascimento
                         </div>
                 </div>
                 <div class="col-md-6">
                     <label  class="form-label" for="senha">Senha</label>
-                    <input type="passoword" [(ngModel)]="funcionario.senha" #senha="ngModel" name="senha" class="form-control form-control-lg" required/>
+                    <input type="password" [(ngModel)]="funcionario.senha" #senha="ngModel" name="senha" class="form-control form-control-lg" required/>
                         <div *ngIf="senha.errors && (senha.dirty || senha.touched)" class="alert alert-danger">
                             Digite a senha
                         </div>
