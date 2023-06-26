@@ -32,7 +32,7 @@
                 </div>
                 <div class="col-md-6">
                     <label  class="form-label" for="senha">Senha</label>
-                    <input type="number" [(ngModel)]="funcionario.senha" #senha="ngModel" name="senha" class="form-control form-control-lg" required/>
+                    <input type="passoword" [(ngModel)]="funcionario.senha" #senha="ngModel" name="senha" class="form-control form-control-lg" required/>
                         <div *ngIf="senha.errors && (senha.dirty || senha.touched)" class="alert alert-danger">
                             Digite a senha
                         </div>

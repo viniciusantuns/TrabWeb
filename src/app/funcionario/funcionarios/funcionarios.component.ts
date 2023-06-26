@@ -13,7 +13,7 @@ import { ModalFuncionarioComponent } from '../modal-funcionario/modal-funcionari
 export class FuncionariosComponent {
   @ViewChild('formFuncionario') formFuncionario! : NgForm;
   
-  funcionarios: Usuario[] = [];
+  funcionarios!: Usuario[];
   funcionario!: Usuario;
   
   
@@ -22,9 +22,13 @@ export class FuncionariosComponent {
   
   ngOnInit(): void {
     this.funcionario = new Usuario();
-    this.funcionarioService.listarFuncionarios().subscribe((funcionarios: Usuario[]) => {
-      funcionarios.forEach(funcionario => {
-        let fun = new Usuario(funcionario.id, funcionario.nome, funcionario.email, funcionario.perfil, funcionario.senha);
+    this.funcionarioService.listarFuncionarios().subscribe((funcionarios1: Usuario[]) => {
+      if (this.funcionarios == undefined){
+          this.funcionarios = []
+      }
+      funcionarios1.forEach(funcionario => {
+        let fun = new Usuario(funcionario.id, funcionario.nome, funcionario.email, funcionario.senha, funcionario.data_nascimento);
+        console.log(fun);
         this.funcionarios.push(fun);
       });
     });
@@ -34,7 +38,7 @@ export class FuncionariosComponent {
     this.funcionarios = [];
     this.funcionarioService.listarFuncionarios().subscribe((funcionarios: Usuario[]) => {
       funcionarios.forEach(funcionario => {
-        let fun = new Usuario(funcionario.id, funcionario.nome, funcionario.email, funcionario.perfil, funcionario.senha);
+        let fun = new Usuario(funcionario.id, funcionario.nome, funcionario.email, funcionario.senha, funcionario.data_nascimento);
         this.funcionarios.push(fun);
       });
     });
@@ -50,14 +54,15 @@ export class FuncionariosComponent {
   }
 
   salvarFuncionario(funcionario: Usuario) {
+    
     this.funcionarioService.inserirFuncionario(funcionario).subscribe(retorno => {
       alert("Funcionário cadastrado com sucesso");
       this.listarFuncionarios();
     });
   }
   
-  editarFuncionario() {
-    this.funcionarioService.editarFuncionario(this.funcionario).subscribe({
+  editarFuncionario(funcionario: Usuario) {
+    this.funcionarioService.editarFuncionario(funcionario).subscribe({
       next: (retorno: any) => {
         alert("Funcionário alterado com sucesso");
         this.listarFuncionarios();
@@ -66,19 +71,20 @@ export class FuncionariosComponent {
   }
     abrirModalFuncionario(funcionario?: Usuario){
         const modalRef = this.modalService.open(ModalFuncionarioComponent);
-      console.log(funcionario);
-      if(funcionario){
-          let func = new Usuario(funcionario.id, funcionario.nome, funcionario.email, funcionario.perfil,funcionario.senha);
-          modalRef.componentInstance.funcionario = func;
-          modalRef.componentInstance.acao = "editar";
 
+      if(funcionario){
+          let func = new Usuario(funcionario.id, funcionario.nome, funcionario.email, funcionario.senha, funcionario.data_nascimento);
+          modalRef.componentInstance.funcionario = func;
+          console.log("b");
+          console.log(modalRef.componentInstance.funcionario);
+          modalRef.componentInstance.acao = "editar";
+          
           modalRef.componentInstance.salvarFuncionarioEvento.subscribe((funcionario: Usuario) => {
-            this.editarFuncionario();
+            this.editarFuncionario(funcionario);
         });
       }
       
       else{
-        console.log("entrou no else");
         modalRef.componentInstance.funcionario = new Usuario();
         modalRef.componentInstance.acao = "novo";
         
